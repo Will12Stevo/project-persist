@@ -134,6 +134,21 @@
   .container{ max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(20px,4vw,40px); }
   .section{ padding-block:clamp(52px,7vw,96px); }
   .section--alt{ background:var(--surface-alt); }
+  .story-slideshow{ margin-top:clamp(28px,4vw,44px); }
+  .slideshow-viewport{ overflow:hidden; }
+  .slideshow-track{ display:flex; gap:12px; transition:transform .45s ease; }
+  .slideshow-slide{ flex:0 0 calc((100% - 24px) / 3); min-width:0; }
+  .slideshow-slide .photo{ aspect-ratio:4/3; }
+  .slideshow-slide img{ width:100%; height:100%; object-fit:cover; }
+  .slideshow-controls{ display:flex; align-items:center; justify-content:space-between; gap:18px; margin-top:20px; }
+  .slideshow-buttons{ display:flex; gap:8px; }
+  .slideshow-button{ width:42px; height:42px; display:grid; place-items:center; border:1px solid var(--line); border-radius:50%; background:var(--surface); color:var(--ink); cursor:pointer; font-size:1.25rem; line-height:1; }
+  .slideshow-button:hover{ background:var(--surface-alt); }
+  .slideshow-dots{ display:flex; gap:7px; }
+  .slideshow-dot{ width:7px; height:7px; padding:0; border:0; border-radius:50%; background:var(--line); cursor:pointer; }
+  .slideshow-dot.is-active{ background:var(--flare-strong); transform:scale(1.25); }
+  @media (max-width:760px){ .slideshow-slide{ flex-basis:calc((100% - 12px) / 2); } }
+  @media (max-width:520px){ .slideshow-slide{ flex-basis:100%; } }
   .section-head{ max-width:660px; margin-bottom:clamp(28px,4vw,44px); }
   h2.section-title{ font-size:clamp(1.8rem,2.4vw + 1rem,2.5rem); }
   h3.sub-title{ font-family:var(--serif); font-size:1.4rem; font-weight:600; margin-top:52px; margin-bottom:18px; }
@@ -237,6 +252,7 @@
   .crew-card{ display:flex; flex-direction:column; }
   .crew-photo{ border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/3.4; }
   .crew-photo img{ width:100%; height:100%; object-fit:cover; }
+  .crew-photo--will img{ object-position:center 20%; }
   .crew-name{ font-family:var(--serif); font-size:1.35rem; font-weight:600; margin-top:18px; }
   .crew-role{ font-family:var(--mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--steel-strong); margin-top:3px; }
   .crew-quote{ margin-top:14px; font-size:1rem; color:var(--ink); }
@@ -457,7 +473,6 @@
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">Will &amp; Georgia</h2>
-        <p class="lede">Friends since school, reunited seven years and four degrees later for the biggest thing either of us has done.</p>
       </div>
       <div class="crew-grid">
         <div class="crew-card">
@@ -468,11 +483,40 @@
           <p class="crew-sub">Rowing in support of Action for M.E.</p>
         </div>
         <div class="crew-card">
-          <div class="crew-photo"><img src="images/will.jpg" alt="Will"></div>
+          <div class="crew-photo crew-photo--will"><img src="images/will.jpg" alt="Will"></div>
           <div class="crew-name">Will</div>
           <div class="crew-role">Crew &middot; Oarsman</div>
           <p class="crew-quote">I'm Type 1 diabetic, which already makes normal life a bit more complicated. The Atlantic won't make that easier &mdash; so Diabetes UK felt like the obvious cause to row for.</p>
           <p class="crew-sub">Rowing in support of Diabetes UK</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="life-outside-row">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Life outside the boat</span>
+        <h2 class="section-title">The people behind Project Persist</h2>
+        <p class="lede">Before we take on the Atlantic, this is the sort of thing we get up to on dry land: mountains, cold weather, long days outside, and the occasional questionable decision.</p>
+      </div>
+      <div class="story-slideshow" data-slideshow>
+        <div class="slideshow-viewport">
+          <div class="slideshow-track">
+            <figure class="slideshow-slide"><div class="photo"><img src="images/will-skiing.jpg" alt="Will skiing on a snowy mountain slope" loading="lazy" decoding="async"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/will-mountain-hike.jpg" alt="Will hiking through a high mountain landscape" loading="lazy" decoding="async"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/will-bridge.jpg" alt="Will sitting beside a mountain railway bridge" loading="lazy" decoding="async"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/will-snow-forest.jpg" alt="Will snowshoeing through a snowy forest" loading="lazy" decoding="async"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/will-glacier-hike.jpg" alt="A mountain glacier and rocky hiking trail" loading="lazy" decoding="async"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/will-desert-climb.jpg" alt="Will climbing across a sunlit mountain landscape" loading="lazy" decoding="async"></div></figure>
+          </div>
+        </div>
+        <div class="slideshow-controls">
+          <div class="slideshow-buttons">
+            <button class="slideshow-button" type="button" data-slide-prev aria-label="Previous photos">&#8592;</button>
+            <button class="slideshow-button" type="button" data-slide-next aria-label="Next photos">&#8594;</button>
+          </div>
+          <div class="slideshow-dots" aria-label="Choose photo group"></div>
         </div>
       </div>
     </div>
@@ -818,6 +862,56 @@
     }
     tick();
     setInterval(tick, 60000);
+  })();
+
+  (function(){
+    var slideshow = document.querySelector('[data-slideshow]');
+    if (!slideshow) return;
+    var track = slideshow.querySelector('.slideshow-track');
+    var slides = slideshow.querySelectorAll('.slideshow-slide');
+    var dots = slideshow.querySelector('.slideshow-dots');
+    var current = 0;
+
+    function visibleSlides(){
+      if (window.innerWidth <= 520) return 1;
+      if (window.innerWidth <= 760) return 2;
+      return 3;
+    }
+
+    function pageCount(){
+      return Math.max(1, slides.length - visibleSlides() + 1);
+    }
+
+    function render(){
+      var visible = visibleSlides();
+      var step = 100 / visible;
+      current = Math.min(current, pageCount() - 1);
+      track.style.transform = 'translateX(-' + (current * step) + '%)';
+      dots.innerHTML = '';
+      for (var index = 0; index < pageCount(); index++){
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'slideshow-dot' + (index === current ? ' is-active' : '');
+        dot.setAttribute('aria-label', 'Show photo group ' + (index + 1));
+        dot.addEventListener('click', function(){
+          current = Number(this.dataset.index);
+          render();
+        });
+        dot.dataset.index = index;
+        dots.appendChild(dot);
+      }
+    }
+
+    slideshow.querySelector('[data-slide-prev]').addEventListener('click', function(){
+      current = current === 0 ? pageCount() - 1 : current - 1;
+      render();
+    });
+    slideshow.querySelector('[data-slide-next]').addEventListener('click', function(){
+      current = current === pageCount() - 1 ? 0 : current + 1;
+      render();
+    });
+    window.addEventListener('resize', render);
+    render();
   })();
 
   (function(){
