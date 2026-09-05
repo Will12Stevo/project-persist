@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Project Persist — Will and Georgia are rowing 3,200 nautical miles across the Atlantic in January 2028. Meet the crew, explore sponsorship packages, and follow the voyage log.">
+<meta property="og:title" content="Project Persist — Row The Atlantic, January 2028">
+<meta property="og:description" content="An unsupported two-person row across the Atlantic Ocean, January 2028. Sponsorship packages, charities, and voyage updates.">
+<meta property="og:type" content="website">
+<title>Project Persist</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+  :root{
+    --ink:#101E30; --ink-soft:#3E4C61;
+    --navy:#0F3057; --navy-deep:#081B30; --on-navy:#EDF2F5; --on-navy-soft:#B7C6D6;
+    --steel:#3E6E90; --steel-strong:#2A5372;
+    --bg:#F5F7F6; --surface:#FFFFFF; --surface-alt:#EAF0F3;
+    --flare:#E4562E; --flare-strong:#B23A1A;
+    --brass:#C79A46; --brass-strong:#9C7530;
+    --line:rgba(16,30,48,.13); --line-soft:rgba(16,30,48,.08);
+    --shadow:0 1px 2px rgba(8,27,48,.06), 0 10px 28px rgba(8,27,48,.09);
+    --radius-lg:20px; --radius-md:12px; --radius-sm:6px;
+    --maxw:1140px;
+    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:'Karla', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mono:'Space Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#E7EDF3; --ink-soft:#AFC0D2;
+      --on-navy:#E7EDF3; --on-navy-soft:#9FB3C6;
+      --steel:#7FB0D6; --steel-strong:#9FC4E4;
+      --bg:#081727; --surface:#0F2338; --surface-alt:#122B44;
+      --flare:#FF7A50; --flare-strong:#E4562E;
+      --brass:#E3B968; --brass-strong:#C79A46;
+      --line:rgba(231,237,243,.16); --line-soft:rgba(231,237,243,.09);
+      --shadow:0 1px 2px rgba(0,0,0,.35), 0 10px 28px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#E7EDF3; --ink-soft:#AFC0D2;
+    --on-navy:#E7EDF3; --on-navy-soft:#9FB3C6;
+    --steel:#7FB0D6; --steel-strong:#9FC4E4;
+    --bg:#081727; --surface:#0F2338; --surface-alt:#122B44;
+    --flare:#FF7A50; --flare-strong:#E4562E;
+    --brass:#E3B968; --brass-strong:#C79A46;
+    --line:rgba(231,237,243,.16); --line-soft:rgba(231,237,243,.09);
+    --shadow:0 1px 2px rgba(0,0,0,.35), 0 10px 28px rgba(0,0,0,.4);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  @media (prefers-reduced-motion:no-preference){ html{ scroll-behavior:smooth; } }
+  @media (prefers-reduced-motion:reduce){ *{ animation-duration:.001ms !important; transition-duration:.001ms !important; } }
+
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); font-size:1rem; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{ max-width:100%; display:block; }
+  a{ color:inherit; }
+  h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.1; margin:0; text-wrap:balance; }
+  p{ margin:0; }
+  ul{ margin:0; padding:0; list-style:none; }
+  button{ font:inherit; }
+  :focus-visible{ outline:2px solid var(--flare); outline-offset:3px; border-radius:2px; }
+
+  .container{ max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(20px,4vw,40px); }
+  .section{ padding-block:clamp(52px,7vw,96px); }
+  .section--alt{ background:var(--surface-alt); }
+  .section-head{ max-width:660px; margin-bottom:clamp(28px,4vw,44px); }
+  h2.section-title{ font-size:clamp(1.8rem,2.4vw + 1rem,2.5rem); }
+  h3.sub-title{ font-family:var(--serif); font-size:1.4rem; font-weight:600; margin-top:52px; margin-bottom:18px; }
+  .lede{ font-size:1.08rem; color:var(--ink-soft); margin-top:14px; max-width:62ch; }
+  .kicker{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--steel-strong); font-weight:700; }
+  .mono{ font-family:var(--mono); }
+  .tabular{ font-variant-numeric:tabular-nums; }
+
+  .cap{ font-size:.8rem; color:var(--ink-soft); margin-top:9px; font-style:italic; }
+  .cap--onnavy{ color:var(--on-navy-soft); }
+  figure{ margin:0; }
+  .photo{ border-radius:var(--radius-md); overflow:hidden; background:var(--surface-alt); }
+  .photo img{ width:100%; height:100%; object-fit:cover; }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--navy) 94%, transparent);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .topbar-inner{
+    max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(20px,4vw,40px);
+    display:flex; align-items:center; justify-content:space-between; height:64px; gap:20px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; color:var(--on-navy); text-decoration:none; }
+  .brand-mark{ width:34px; height:34px; flex:none; border-radius:50%; object-fit:cover; background:#fff; }
+  .brand-word{ font-family:var(--serif); font-weight:600; font-size:1.05rem; letter-spacing:.01em; }
+  .brand-sub{ display:none; }
+  @media (min-width:560px){
+    .brand-sub{ display:inline; font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; color:var(--on-navy-soft); text-transform:uppercase; margin-left:6px; padding-left:10px; border-left:1px solid rgba(255,255,255,.2); }
+  }
+  .nav-links{ display:flex; align-items:center; gap:clamp(14px,2vw,26px); font-size:.92rem; font-weight:500; }
+  .nav-links a{ text-decoration:none; color:var(--on-navy-soft); white-space:nowrap; }
+  .nav-links a:hover{ color:var(--on-navy); }
+  .nav-cta{ background:var(--flare-strong); color:#fff !important; padding:9px 16px; border-radius:999px; font-weight:700; font-size:.86rem; }
+  .nav-cta:hover{ background:var(--flare); }
+  .nav-toggle{ display:none; background:none; border:0; cursor:pointer; padding:8px; margin:-8px; flex-direction:column; gap:5px; }
+  .nav-toggle span{ width:22px; height:2px; background:var(--on-navy); display:block; border-radius:2px; }
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed; inset:64px 0 auto 0; background:var(--navy-deep);
+      flex-direction:column; align-items:stretch; padding:10px 22px 26px; gap:2px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease;
+    }
+    .nav-links.is-open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+    .nav-links a{ padding:12px 4px; border-bottom:1px solid rgba(255,255,255,.06); }
+    .nav-cta{ margin-top:10px; text-align:center; }
+    .nav-toggle{ display:flex; }
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{ display:inline-flex; align-items:center; gap:9px; justify-content:center; padding:13px 24px; border-radius:999px; font-weight:700; font-size:.95rem; text-decoration:none; border:1.5px solid transparent; cursor:pointer; transition:transform .12s ease; }
+  .btn:active{ transform:translateY(1px); }
+  .btn--primary{ background:var(--flare-strong); color:#fff; }
+  .btn--primary:hover{ background:var(--flare); }
+  .btn--outline{ border-color:currentColor; color:var(--on-navy); background:transparent; }
+  .btn--outline:hover{ background:rgba(255,255,255,.08); }
+  .btn-row{ display:flex; flex-wrap:wrap; gap:14px; }
+
+  /* ---------- hero ---------- */
+  .hero{ background:linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%); color:var(--on-navy); }
+  .hero-inner{
+    max-width:var(--maxw); margin-inline:auto; padding:clamp(40px,6vw,72px) clamp(20px,4vw,40px) clamp(36px,5vw,56px);
+    display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(30px,5vw,56px); align-items:center;
+  }
+  @media (max-width:920px){ .hero-inner{ grid-template-columns:1fr; } }
+  .hero .kicker{ color:var(--brass); }
+  .hero h1{ font-size:clamp(2.1rem,3.2vw + 1.1rem,3.3rem); color:#fff; margin-top:10px; }
+  .hero .lede{ color:var(--on-navy-soft); font-size:1.12rem; margin-top:16px; max-width:52ch; }
+  .hero .btn-row{ margin-top:28px; }
+  .hero-photo{ border-radius:var(--radius-lg); overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.35); }
+  .hero-photo img{ width:100%; display:block; }
+
+  .countdown{ margin-top:30px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .countdown-num{ font-family:var(--mono); font-weight:700; font-size:1.9rem; color:#fff; }
+  .countdown-text{ font-size:.92rem; color:var(--on-navy-soft); }
+
+  .stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(255,255,255,.12); }
+  .stat-strip div{ padding:18px clamp(14px,3vw,26px); border-left:1px solid rgba(255,255,255,.12); }
+  .stat-strip div:first-child{ border-left:none; }
+  @media (max-width:640px){ .stat-strip{ grid-template-columns:repeat(2,1fr); } .stat-strip div:nth-child(3){ border-left:none; } }
+  .stat-num{ font-family:var(--mono); font-weight:700; font-size:clamp(1.2rem,1.8vw,1.5rem); color:#fff; }
+  .stat-label{ font-family:var(--mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--on-navy-soft); margin-top:4px; }
+
+  /* ---------- intro note ---------- */
+  .note{ max-width:640px; margin-inline:auto; text-align:center; }
+  .note p{ font-family:var(--serif); font-style:italic; font-size:clamp(1.15rem,1.4vw + .8rem,1.5rem); color:var(--ink); line-height:1.5; }
+  .note .signed{ margin-top:18px; font-family:var(--sans); font-style:normal; font-weight:700; font-size:.95rem; color:var(--steel-strong); }
+
+  /* ---------- two col with photo ---------- */
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(30px,5vw,60px); align-items:center; }
+  @media (max-width:820px){ .split{ grid-template-columns:1fr; } }
+  .split.reverse .split-media{ order:2; }
+  @media (max-width:820px){ .split.reverse .split-media{ order:0; } }
+
+  /* ---------- crew ---------- */
+  .crew-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+  @media (max-width:760px){ .crew-grid{ grid-template-columns:1fr; } }
+  .crew-card{ display:flex; flex-direction:column; }
+  .crew-photo{ border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/3.4; }
+  .crew-photo img{ width:100%; height:100%; object-fit:cover; }
+  .crew-name{ font-family:var(--serif); font-size:1.35rem; font-weight:600; margin-top:18px; }
+  .crew-role{ font-family:var(--mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--steel-strong); margin-top:3px; }
+  .crew-quote{ margin-top:14px; font-size:1rem; color:var(--ink); }
+  .crew-quote::before{ content:"\201C"; }
+  .crew-quote::after{ content:"\201D"; }
+  .crew-sub{ margin-top:10px; font-size:.9rem; color:var(--ink-soft); }
+
+  /* ---------- route coords ---------- */
+  .route-coords{ display:flex; flex-direction:column; gap:14px; margin-top:24px; }
+  .coord-row{ display:flex; gap:14px; align-items:flex-start; padding:13px 0; border-top:1px solid var(--line); }
+  .coord-row:first-child{ border-top:none; }
+  .coord-pin{ width:10px; height:10px; border-radius:50%; margin-top:6px; flex:none; }
+  .coord-pin--start{ background:var(--brass-strong); }
+  .coord-pin--finish{ background:var(--flare-strong); }
+  .coord-title{ font-weight:700; font-size:.95rem; }
+  .coord-sub{ font-family:var(--mono); font-size:.82rem; color:var(--ink-soft); margin-top:2px; }
+  .badge-row{ display:flex; align-items:center; gap:10px; margin-top:22px; }
+  .badge-row img{ width:34px; height:34px; border-radius:50%; }
+  .badge-row span{ font-size:.88rem; color:var(--ink-soft); }
+
+  /* ---------- charities ---------- */
+  .charity-grid{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  @media (max-width:760px){ .charity-grid{ grid-template-columns:1fr; } }
+  .charity-card{ border-radius:var(--radius-lg); padding:clamp(26px,3vw,34px); background:var(--surface); box-shadow:var(--shadow); }
+  .charity-card img{ height:44px; width:auto; margin-bottom:18px; }
+  .charity-card p{ margin-top:12px; color:var(--ink-soft); }
+
+  /* ---------- value list (replaces numbered benefit cards) ---------- */
+  .value-list{ margin-top:8px; display:flex; flex-direction:column; gap:14px; }
+  .value-list li{ padding-left:22px; position:relative; font-size:1rem; color:var(--ink); }
+  .value-list li::before{ content:"—"; position:absolute; left:0; color:var(--flare-strong); font-weight:700; }
+  .value-list strong{ font-weight:700; }
+
+  /* ---------- phases (replaces boxed timeline) ---------- */
+  .phases{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(24px,3vw,40px); margin-top:8px; }
+  @media (max-width:760px){ .phases{ grid-template-columns:1fr; } }
+  .phase h4{ font-family:var(--serif); font-size:1.15rem; font-weight:600; }
+  .phase .kicker{ display:block; margin-bottom:8px; }
+  .phase p{ margin-top:10px; color:var(--ink-soft); font-size:.95rem; }
+
+  /* ---------- tiers table ---------- */
+  .table-wrap{ overflow-x:auto; border-radius:var(--radius-md); border:1px solid var(--line); }
+  table.tiers{ border-collapse:collapse; width:100%; min-width:760px; background:var(--surface); }
+  table.tiers th, table.tiers td{ padding:14px 16px; text-align:left; border-bottom:1px solid var(--line); font-size:.88rem; }
+  table.tiers thead th{ background:var(--navy); color:var(--on-navy); font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; vertical-align:top; }
+  table.tiers thead th .price{ display:block; font-size:.92rem; color:var(--brass); font-weight:700; margin-top:5px; text-transform:none; letter-spacing:0; }
+  table.tiers tbody th{ font-weight:600; background:var(--surface-alt); white-space:nowrap; }
+  table.tiers tbody tr:last-child td, table.tiers tbody tr:last-child th{ border-bottom:none; }
+  table.tiers td{ text-align:center; }
+  .yes{ color:var(--flare-strong); font-weight:700; }
+  .no{ color:var(--ink-soft); opacity:.4; }
+  .avail-note{ margin-top:14px; font-size:.85rem; color:var(--ink-soft); }
+
+  /* ---------- support cards ---------- */
+  .support-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:34px; }
+  @media (max-width:760px){ .support-grid{ grid-template-columns:1fr; } }
+  .support-card{ padding:26px; border-radius:var(--radius-md); background:var(--surface); border:1px solid var(--line); }
+  .support-card h4{ font-size:1.1rem; }
+  .support-card p{ margin-top:10px; color:var(--ink-soft); font-size:.94rem; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .chip{ font-family:var(--mono); font-size:.72rem; padding:6px 11px; border-radius:999px; background:var(--surface-alt); color:var(--ink-soft); }
+
+  /* ---------- funding ---------- */
+  .fund-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; margin-top:8px; }
+  @media (max-width:760px){ .fund-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:480px){ .fund-grid{ grid-template-columns:1fr; } }
+  .fund-cell{ background:var(--surface); padding:22px 20px; }
+  .fund-amount{ font-family:var(--mono); font-weight:700; font-size:1.4rem; }
+  .fund-label{ margin-top:5px; font-size:.86rem; color:var(--ink-soft); }
+  .fund-note{ margin-top:20px; font-size:.9rem; color:var(--ink-soft); max-width:70ch; }
+
+  /* ---------- triptych ---------- */
+  .triptych{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:28px; }
+  @media (max-width:640px){ .triptych{ grid-template-columns:1fr; } }
+  .triptych .photo{ aspect-ratio:4/3; }
+
+  /* ---------- log ---------- */
+  .log-list{ display:flex; flex-direction:column; }
+  .log-entry{ display:grid; grid-template-columns:140px 1fr; gap:24px; padding:24px 0; border-top:1px solid var(--line); }
+  .log-list .log-entry:first-child{ border-top:none; }
+  @media (max-width:640px){ .log-entry{ grid-template-columns:1fr; gap:6px; } }
+  .log-date{ font-family:var(--mono); font-size:.78rem; color:var(--steel-strong); font-weight:700; }
+  .log-entry h4{ font-size:1.1rem; margin-top:4px; }
+  .log-entry p{ margin-top:8px; color:var(--ink-soft); }
+  .log-note{ margin-top:26px; font-size:.88rem; color:var(--ink-soft); font-style:italic; }
+
+  /* ---------- contact ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(30px,5vw,60px); }
+  @media (max-width:840px){ .contact-grid{ grid-template-columns:1fr; } }
+  .field{ display:flex; flex-direction:column; gap:7px; margin-bottom:18px; }
+  .field label{ font-size:.85rem; font-weight:700; }
+  .field input, .field select, .field textarea{ font:inherit; padding:12px 14px; border-radius:var(--radius-sm); border:1.5px solid var(--line); background:var(--surface); color:var(--ink); }
+  .field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--steel); }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:520px){ .field-row{ grid-template-columns:1fr; } }
+  .form-status{ margin-top:6px; font-size:.88rem; min-height:1.2em; }
+  .form-status--pending{ color:var(--ink-soft); }
+  .form-status--error{ color:var(--flare-strong); }
+  .form-success{ padding:26px; border-radius:var(--radius-md); background:var(--surface-alt); }
+  .form-success h4{ font-size:1.15rem; }
+  .form-success p{ margin-top:8px; color:var(--ink-soft); }
+
+  .contact-card{ background:var(--navy); color:var(--on-navy); border-radius:var(--radius-lg); padding:clamp(26px,3vw,36px); }
+  .contact-card h4{ font-size:1.15rem; color:#fff; }
+  .contact-list{ margin-top:20px; display:flex; flex-direction:column; gap:16px; }
+  .contact-list a{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--on-navy); font-size:.95rem; }
+  .contact-list svg{ width:19px; height:19px; flex:none; color:var(--brass); }
+  .contact-divider{ height:1px; background:rgba(255,255,255,.12); margin:22px 0; }
+
+  /* ---------- footer ---------- */
+  footer{ background:var(--navy-deep); color:var(--on-navy-soft); padding-block:44px; }
+  .footer-inner{ max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(20px,4vw,40px); display:flex; flex-wrap:wrap; justify-content:space-between; gap:30px; }
+  .footer-brand{ display:flex; align-items:center; gap:10px; color:#fff; }
+  .footer-brand img{ width:30px; height:30px; border-radius:50%; background:#fff; }
+  .footer-brand span{ font-family:var(--serif); font-weight:600; }
+  .footer-tag{ font-size:.85rem; margin-top:10px; max-width:34ch; }
+  .footer-partner{ display:flex; align-items:center; gap:8px; margin-top:14px; font-size:.8rem; }
+  .footer-partner img{ width:22px; height:22px; border-radius:50%; }
+  .footer-links{ display:flex; gap:40px; flex-wrap:wrap; }
+  .footer-col h5{ font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--on-navy-soft); margin-bottom:12px; }
+  .footer-col a{ display:block; text-decoration:none; color:var(--on-navy-soft); font-size:.9rem; padding:5px 0; }
+  .footer-col a:hover{ color:#fff; }
+  .footer-bottom{ max-width:var(--maxw); margin:34px auto 0; padding-inline:clamp(20px,4vw,40px); padding-top:22px; border-top:1px solid rgba(255,255,255,.1); font-size:.8rem; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="icon-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></symbol>
+</svg>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="brand">
+      <img class="brand-mark" src="images/logo-persistence.png" alt="">
+      <span class="brand-word">Project Persist</span>
+      <span class="brand-sub">Atlantic Dash &middot; Jan 2028</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="#challenge">Challenge</a>
+      <a href="#crew">Crew</a>
+      <a href="#route">Route</a>
+      <a href="#charities">Charities</a>
+      <a href="#sponsor">Sponsor</a>
+      <a href="#log">Log</a>
+      <a href="#contact" class="nav-cta">Become a Sponsor</a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="kicker">Project Persist &middot; Departing January 2028</span>
+      <h1>We're rowing the Atlantic. Just the two of us.</h1>
+      <p class="lede">In January 2028, Will and Georgia are taking on 3,200 nautical miles from the Canary Islands to the Caribbean &mdash; no engine, no support boat, just a 9.8&nbsp;metre boat and each other. This is Project Persist, and we'd love you to be part of it.</p>
+      <div class="btn-row">
+        <a href="#sponsor" class="btn btn--primary">Become a Sponsor</a>
+        <a href="#log" class="btn btn--outline">Read the Log</a>
+      </div>
+      <div class="countdown">
+        <span class="countdown-num tabular" id="cd-days">&mdash;</span>
+        <span class="countdown-text">days until the January 2028 departure window<br>(exact date confirmed by Atlantic Dash closer to the time)</span>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <img src="images/hero-rowing.jpg" alt="A two-person ocean rowing boat under Atlantic Dash colours, mid-Atlantic">
+    </figure>
+  </div>
+  <div class="stat-strip">
+    <div><div class="stat-num tabular">3,200</div><div class="stat-label">Nautical Miles</div></div>
+    <div><div class="stat-num tabular">&le;50</div><div class="stat-label">Days at Sea</div></div>
+    <div><div class="stat-num tabular">2</div><div class="stat-label">Rowers</div></div>
+    <div><div class="stat-num tabular">0</div><div class="stat-label">Engine / Support Boat</div></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section">
+    <div class="container note">
+      <p>We've been friends since school. This year we decided the best way to test that friendship properly was to lock ourselves in a rowing boat together for up to 50 days in the middle of the Atlantic. Turns out you need a fair amount of help to make that happen &mdash; which is where this website, and hopefully you, come in.</p>
+      <div class="signed">&mdash; Will &amp; Georgia</div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="challenge">
+    <div class="container">
+      <div class="split">
+        <div>
+          <h2 class="section-title">An unsupported crossing</h2>
+          <p class="lede">Once we push off the dock at Marina Rubic&oacute;n, that's it. No engine, no support boat, no one to call if it goes wrong &mdash; just two oars, one 9.8&nbsp;metre boat, and around 3,000 nautical miles of open Atlantic between us and Antigua. It puts us among some of the youngest crews to row an ocean. We're told that's either impressive or slightly mad. Possibly both.</p>
+        </div>
+        <figure class="split-media">
+          <div class="photo"><img src="images/wave-splash.jpg" alt="A rower drenched by an Atlantic wave mid-crossing"></div>
+          <p class="cap">Photo: a previous Atlantic Dash crossing &mdash; the kind of moment we're training for.</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="crew">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Will &amp; Georgia</h2>
+        <p class="lede">Friends since school, reunited seven years and four degrees later for the biggest thing either of us has done.</p>
+      </div>
+      <div class="crew-grid">
+        <div class="crew-card">
+          <div class="crew-photo"><img src="images/georgia.jpg" alt="Georgia"></div>
+          <div class="crew-name">Georgia</div>
+          <div class="crew-role">Crew &middot; Oarswoman</div>
+          <p class="crew-quote">I'm rowing for Shona &mdash; my close friend who's lived with M.E. since she was 16. If sitting in a boat for 50 days raises awareness for that, it's worth every blister.</p>
+          <p class="crew-sub">Rowing in support of Action for M.E.</p>
+        </div>
+        <div class="crew-card">
+          <div class="crew-photo"><img src="images/will.jpg" alt="Will"></div>
+          <div class="crew-name">Will</div>
+          <div class="crew-role">Crew &middot; Oarsman</div>
+          <p class="crew-quote">I'm Type 1 diabetic, which already makes normal life a bit more complicated. The Atlantic won't make that easier &mdash; so Diabetes UK felt like the obvious cause to row for.</p>
+          <p class="crew-sub">Rowing in support of Diabetes UK</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="route">
+    <div class="container">
+      <div class="split reverse">
+        <div>
+          <h2 class="section-title">What is Atlantic Dash?</h2>
+          <p class="lede">Atlantic Dash is who's actually getting us out there. They run the crossing every year, usually with 4&ndash;6 crews, and handle the training, safety cover and expert guidance that turns "two people in a boat" into an organised (if still fairly terrifying) event.</p>
+          <div class="route-coords">
+            <div class="coord-row">
+              <span class="coord-pin coord-pin--start"></span>
+              <div><div class="coord-title">Start &middot; Marina Rubic&oacute;n, Lanzarote</div><div class="coord-sub">28.8&deg;N &nbsp;13.8&deg;W</div></div>
+            </div>
+            <div class="coord-row">
+              <span class="coord-pin coord-pin--finish"></span>
+              <div><div class="coord-title">Finish &middot; Jolly Harbour, Antigua</div><div class="coord-sub">17.0&deg;N &nbsp;61.8&deg;W</div></div>
+            </div>
+            <div class="coord-row">
+              <span class="coord-pin" style="background:var(--steel-strong)"></span>
+              <div><div class="coord-title">Distance</div><div class="coord-sub">3,200 nautical miles, unsupported</div></div>
+            </div>
+          </div>
+          <div class="badge-row">
+            <img src="images/logo-atlanticdash.png" alt="">
+            <span>Organised by Atlantic Dash</span>
+          </div>
+        </div>
+        <figure class="split-media">
+          <div class="photo"><img src="images/route-map.jpg" alt="Map of the route from Lanzarote to Antigua across the Atlantic Ocean"></div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="charities">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Rowing for two causes</h2>
+        <p class="lede">Every mile raises awareness and funds for two conditions that already shape our own lives.</p>
+      </div>
+      <div class="charity-grid">
+        <div class="charity-card">
+          <img src="images/logo-actionforme.png" alt="Action for M.E.">
+          <p>Myalgic Encephalomyelitis (M.E.) affects every part of a person's life &mdash; even simple physical or mental activity can leave someone utterly debilitated. Action for M.E. supports anyone living with, or caring for someone with, M.E., and funds research into a condition that's still poorly understood. We're rowing on behalf of Georgia's close friend Shona, who has lived with M.E. since she was 16.</p>
+        </div>
+        <div class="charity-card">
+          <img src="images/logo-diabetesuk.png" alt="Diabetes UK">
+          <p>Diabetes UK is the country's leading charitable funder of diabetes research, working toward treatment breakthroughs and, eventually, a cure for a condition that affects 9.5&nbsp;million people worldwide. Will is Type&nbsp;1 diabetic, which will add its own layer of difficulty to 50 days at sea &mdash; and is exactly why this cause matters to us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="sponsor">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Partner with us</h2>
+        <p class="lede">We're self-funding as much of this as we can, but a crossing like this comes with real costs &mdash; boat charter, race fees, shipping, safety kit. If your business is looking for a genuinely different way to get your name out there, and a good story to tell alongside it, we'd love to talk. Every package below can be tailored.</p>
+      </div>
+
+      <h3 class="sub-title">What you get</h3>
+      <ul class="value-list">
+        <li><strong>PR and brand exposure</strong> &mdash; local, national and international coverage through TV, press, radio and social media across the campaign.</li>
+        <li><strong>Team endorsement</strong> &mdash; we'll wear your kit and use your services on the water, and talk about it to our audience throughout.</li>
+        <li><strong>First access to media</strong> &mdash; full rights to photo and video content captured before, during and after the row.</li>
+        <li><strong>A genuinely different story</strong> &mdash; association with an adventure your business hasn't been part of before, plus new connections to the charities we're supporting.</li>
+      </ul>
+
+      <h3 class="sub-title">Before, during &amp; after the row</h3>
+      <div class="phases">
+        <div class="phase">
+          <span class="kicker">Pre-Row</span>
+          <h4>Building the audience</h4>
+          <p>A dedicated social media manager growing our reach, fundraising events across Scotland, Yorkshire and South England, and potential appearances with the boat depending on the partnership.</p>
+        </div>
+        <div class="phase">
+          <span class="kicker">During the Row</span>
+          <h4>Live from the Atlantic</h4>
+          <p>Satellite comms returning photo and video straight from the boat, daily content from our social media manager, and press releases keeping the crossing in front of media.</p>
+        </div>
+        <div class="phase">
+          <span class="kicker">Post-Row</span>
+          <h4>Landfall &amp; beyond</h4>
+          <p>Our full photo and video library shared with partners, interviews on arrival in Antigua and back in the UK, and follow-up events where they make sense.</p>
+        </div>
+      </div>
+
+      <h3 class="sub-title">Sponsorship tiers</h3>
+      <div class="split" style="align-items:flex-start; margin-bottom:24px;">
+        <p class="lede" style="margin-top:0;">At 9.8m long, our boat is a blank canvas &mdash; the place to put your brand in front of people before the row and throughout the crossing.</p>
+        <figure class="split-media">
+          <div class="photo"><img src="images/hull-branding.jpg" alt="Sponsor logos on the hull of a previous Atlantic Dash boat"></div>
+          <p class="cap">Hull branding from a previous Atlantic Dash campaign &mdash; your logo could take a similar spot on ours.</p>
+        </figure>
+      </div>
+      <div class="table-wrap">
+        <table class="tiers">
+          <thead>
+            <tr>
+              <th scope="col">Benefit</th>
+              <th scope="col">Main Sponsor<span class="price">P.O.A.</span></th>
+              <th scope="col">Gold<span class="price">&pound;20,000</span></th>
+              <th scope="col">Silver<span class="price">&pound;10,000</span></th>
+              <th scope="col">Bronze<span class="price">&pound;5,000</span></th>
+              <th scope="col">&pound;1,000 Club<span class="price">&pound;1,000</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Boat wrap &mdash; design your own</th><td class="yes">&check;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td></tr>
+            <tr><th scope="row">Boat branding</th><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td></tr>
+            <tr><th scope="row">Kit branding</th><td class="yes">&check;</td><td class="yes">&check;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td></tr>
+            <tr><th scope="row">Partner announcement post</th><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td></tr>
+            <tr><th scope="row">Socials endorsement</th><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="no">&mdash;</td></tr>
+            <tr><th scope="row">Video &amp; imagery access</th><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td></tr>
+            <tr><th scope="row">PR interview opportunities</th><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="no">&mdash;</td></tr>
+            <tr><th scope="row">Bespoke content creation</th><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="no">&mdash;</td><td class="no">&mdash;</td></tr>
+            <tr><th scope="row">Corporate event attendance</th><td class="yes">&check;</td><td class="yes">&check;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td></tr>
+            <tr><th scope="row">Speaker events</th><td class="yes">&check;</td><td class="yes">&check;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td></tr>
+            <tr><th scope="row">Project Persist event invite</th><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="yes">&check;</td><td class="no">&mdash;</td></tr>
+            <tr><th scope="row">Ergo lessons &mdash; learn to row</th><td class="yes">&check;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="no">&mdash;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="avail-note">Oar branding is also available across tiers, subject to availability &mdash; email us for details.</p>
+
+      <div class="support-grid">
+        <div class="support-card">
+          <h4>&pound;250 Club</h4>
+          <p>We appreciate any support that helps us reach the start line. As a thank-you to small businesses, we'll print your company logo on our boat hatches &mdash; visible throughout the row.</p>
+        </div>
+        <div class="support-card">
+          <h4>Goods &amp; services in kind</h4>
+          <p>We'd be grateful for collaborations or individuals who can provide goods or services we need for the row &mdash; we'll offer a sponsorship package to reflect the contribution.</p>
+          <div class="chip-row">
+            <span class="chip">Clothing</span><span class="chip">Shipping</span><span class="chip">Sports Psychology</span><span class="chip">S&amp;C / Physio</span><span class="chip">Boat Equipment</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-title">What your support funds</h3>
+      <div class="fund-grid">
+        <div class="fund-cell"><div class="fund-amount tabular">&pound;15,000</div><div class="fund-label">Boat charter</div></div>
+        <div class="fund-cell"><div class="fund-amount tabular">&pound;17,000</div><div class="fund-label">Race fees</div></div>
+        <div class="fund-cell"><div class="fund-amount tabular">&pound;15,000</div><div class="fund-label">Shipping</div></div>
+        <div class="fund-cell"><div class="fund-amount tabular">&pound;5,000</div><div class="fund-label">Equipment</div></div>
+        <div class="fund-cell"><div class="fund-amount tabular">&pound;5,000<span style="font-size:.6em; font-weight:400;"> pp</span></div><div class="fund-label">Food</div></div>
+        <div class="fund-cell"><div class="fund-amount tabular">&pound;2,000</div><div class="fund-label">Training courses</div></div>
+      </div>
+      <p class="fund-note">After the crossing, we'll sell the equipment and any leftover goods, turning those assets into additional donations for our final fundraising total &mdash; so as a sponsor, you're contributing twice over.</p>
+
+      <div class="btn-row" style="margin-top:40px;">
+        <a href="#contact" class="btn btn--primary">Talk to us about a package</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="log">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">The Log</h2>
+        <p class="lede">Updates from training, fundraising, and &mdash; from January 2028 &mdash; the ocean itself. First entries below; check back as we get closer to departure.</p>
+      </div>
+      <div class="triptych">
+        <figure><div class="photo"><img src="images/flares-departure.jpg" alt="A previous Atlantic Dash crew setting off flares at departure"></div></figure>
+        <figure><div class="photo"><img src="images/crew-underway.jpg" alt="A four-person crew rowing mid-Atlantic"></div></figure>
+        <figure><div class="photo"><img src="images/solo-flags.jpg" alt="A rower on deck with the Isle of Man and Antigua flags"></div></figure>
+      </div>
+      <p class="cap" style="margin-bottom:8px;">Atlantic Dash crossings from past years &mdash; the community we're joining this January.</p>
+      <div class="log-list" style="margin-top:24px;">
+        <div class="log-entry">
+          <div class="log-date mono">05 SEP 2026</div>
+          <div><h4>Welcome to Project Persist</h4><p>This is where we'll be posting as training ramps up, sponsors come on board, and January 2028 gets closer. Follow along here or on Instagram <strong>@projectpersist</strong>.</p></div>
+        </div>
+        <div class="log-entry">
+          <div class="log-date mono">05 SEP 2026</div>
+          <div><h4>Sponsorship packages are open</h4><p>Our sponsorship package is live &mdash; Main Sponsor down to the &pound;250 Club, plus goods and services in kind. Get in touch below if you'd like to be part of the crossing.</p></div>
+        </div>
+      </div>
+      <p class="log-note">More to follow as training and fundraising continue toward January 2028.</p>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Want to join our adventure?</h2>
+        <p class="lede">We'd love to hear from your business about partnering with us. Anything you can do to help us reach the start line &mdash; and maximise support for our charities &mdash; is hugely appreciated.</p>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <!-- Replace YOUR_FORM_ID below with your real Formspree endpoint (create one free at formspree.io) -->
+          <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="hidden" name="_subject" value="New enquiry — Project Persist website">
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required autocomplete="email">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="company">Company / organisation</label>
+                <input id="company" name="company" type="text" autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="interest">I'm interested in</label>
+                <select id="interest" name="interest">
+                  <option>Sponsorship</option>
+                  <option>Goods or services in kind</option>
+                  <option>Media &amp; press</option>
+                  <option>Donation</option>
+                  <option>General enquiry</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary">Send message</button>
+            <p class="form-status" id="form-status" role="status"></p>
+          </form>
+          <div class="form-success" id="form-success" hidden>
+            <h4>Message sent &mdash; thank you.</h4>
+            <p>We'll get back to you as soon as we can. In the meantime, follow the log or drop us a line directly at projectpersist2028@gmail.com.</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <h4>Direct contact</h4>
+          <div class="contact-list">
+            <a href="mailto:projectpersist2028@gmail.com"><svg><use href="#icon-mail"/></svg>projectpersist2028@gmail.com</a>
+            <a href="tel:+447485169644"><svg><use href="#icon-phone"/></svg>07485 169644</a>
+            <a href="https://instagram.com/projectpersist" target="_blank" rel="noopener"><svg><use href="#icon-insta"/></svg>@projectpersist</a>
+          </div>
+          <div class="contact-divider"></div>
+          <div class="coord-sub mono" style="color:var(--on-navy-soft)">28.8&deg;N 13.8&deg;W &rarr; 17.0&deg;N 61.8&deg;W</div>
+          <p style="margin-top:6px; font-size:.85rem; color:var(--on-navy-soft);">Marina Rubic&oacute;n, Lanzarote to Jolly Harbour, Antigua &middot; 3,200&nbsp;NM &middot; January 2028</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="#top" class="footer-brand">
+        <img src="images/logo-persistence.png" alt="">
+        <span>Project Persist</span>
+      </a>
+      <p class="footer-tag">Rowing 3,200 nautical miles across the Atlantic, unsupported, January 2028 &mdash; for Action for M.E. and Diabetes UK.</p>
+      <div class="footer-partner"><img src="images/logo-atlanticdash.png" alt="">Organised by Atlantic Dash</div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <a href="#challenge">The Challenge</a>
+        <a href="#crew">The Crew</a>
+        <a href="#route">The Route</a>
+        <a href="#log">The Log</a>
+      </div>
+      <div class="footer-col">
+        <h5>Get Involved</h5>
+        <a href="#charities">Our Charities</a>
+        <a href="#sponsor">Sponsorship</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Follow</h5>
+        <a href="https://instagram.com/projectpersist" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:projectpersist2028@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026&ndash;2028 Project Persist &middot; Will &amp; Georgia</span>
+    <span>Built ahead of a January 2028 departure.</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var toggle = document.getElementById('nav-toggle');
+    var links = document.getElementById('nav-links');
+    toggle.addEventListener('click', function(){
+      var open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        links.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+
+  (function(){
+    var target = new Date('2028-01-01T00:00:00Z').getTime();
+    var d = document.getElementById('cd-days');
+    function tick(){
+      var diff = target - Date.now();
+      if (diff < 0) diff = 0;
+      d.textContent = Math.floor(diff / 86400000).toLocaleString();
+    }
+    tick();
+    setInterval(tick, 60000);
+  })();
+
+  (function(){
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('form-status');
+    var success = document.getElementById('form-success');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      status.textContent = 'Sending…';
+      status.className = 'form-status form-status--pending';
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res){
+        if (res.ok){
+          form.hidden = true;
+          success.hidden = false;
+          status.textContent = '';
+        } else {
+          res.json().then(function(json){
+            var msg = (json && json.errors) ? json.errors.map(function(e){ return e.message; }).join(', ') : 'Something went wrong — please email us directly.';
+            status.textContent = msg;
+            status.className = 'form-status form-status--error';
+          }).catch(function(){
+            status.textContent = 'Something went wrong — please email us directly at projectpersist2028@gmail.com.';
+            status.className = 'form-status form-status--error';
+          });
+        }
+      }).catch(function(){
+        status.textContent = 'Network error — please email us directly at projectpersist2028@gmail.com.';
+        status.className = 'form-status form-status--error';
+      });
+    });
+  })();
+</script>
+</body>
+</html>
