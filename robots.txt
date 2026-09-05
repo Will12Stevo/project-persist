@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://will12stevo.github.io/project-persist/sitemap.xml
