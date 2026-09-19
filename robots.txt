@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://will12stevo.github.io/project-persist/sitemap.xml
+Sitemap: https://projectpersist2028.com/sitemap.xml
