@@ -77,8 +77,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
 <style>
   :root{
-    --ink:#101E30; --ink-soft:#3E4C61;
-    --navy:#0F3057; --navy-deep:#081B30; --on-navy:#EDF2F5; --on-navy-soft:#B7C6D6;
+    --ink:#101E30; --ink-soft:#2D3B4F;
+    --navy:#0F3057; --navy-deep:#081B30; --on-navy:#FFFFFF; --on-navy-soft:#E4EBF2;
     --steel:#3E6E90; --steel-strong:#2A5372;
     --bg:#F5F7F6; --surface:#FFFFFF; --surface-alt:#EAF0F3;
     --flare:#E4562E; --flare-strong:#B23A1A;
@@ -94,8 +94,8 @@
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --ink:#E7EDF3; --ink-soft:#AFC0D2;
-      --on-navy:#E7EDF3; --on-navy-soft:#9FB3C6;
+      --ink:#F4F8FC; --ink-soft:#DCE6F0;
+      --on-navy:#FFFFFF; --on-navy-soft:#E4EBF2;
       --steel:#7FB0D6; --steel-strong:#9FC4E4;
       --bg:#081727; --surface:#0F2338; --surface-alt:#122B44;
       --flare:#FF7A50; --flare-strong:#E4562E;
@@ -106,8 +106,8 @@
     }
   }
   :root[data-theme="dark"]{
-    --ink:#E7EDF3; --ink-soft:#AFC0D2;
-    --on-navy:#E7EDF3; --on-navy-soft:#9FB3C6;
+    --ink:#F4F8FC; --ink-soft:#DCE6F0;
+    --on-navy:#FFFFFF; --on-navy-soft:#E4EBF2;
     --steel:#7FB0D6; --steel-strong:#9FC4E4;
     --bg:#081727; --surface:#0F2338; --surface-alt:#122B44;
     --flare:#FF7A50; --flare-strong:#E4562E;
@@ -295,7 +295,8 @@
   .charity-grid{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
   @media (max-width:760px){ .charity-grid{ grid-template-columns:1fr; } }
   .charity-card{ border-radius:var(--radius-lg); padding:clamp(26px,3vw,34px); background:var(--surface); box-shadow:var(--shadow); }
-  .charity-card img{ height:44px; width:auto; margin-bottom:18px; }
+  .charity-logo{ display:inline-flex; align-items:center; justify-content:center; min-height:clamp(92px,9vw,114px); padding:14px 18px; margin:0 0 22px -18px; background:#fff; border-radius:var(--radius-md); }
+  .charity-card img{ flex:none; width:auto; height:auto; max-height:clamp(64px,6.5vw,84px); max-width:min(300px,62vw); margin:0; }
   .charity-card p{ margin-top:12px; color:var(--ink-soft); }
 
   /* ---------- value list (replaces numbered benefit cards) ---------- */
@@ -346,6 +347,17 @@
   .triptych{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:28px; }
   @media (max-width:640px){ .triptych{ grid-template-columns:1fr; } }
   .triptych .photo{ aspect-ratio:4/3; }
+
+  /* ---------- bottom gallery ---------- */
+  .gallery{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:clamp(118px,13vw,176px); gap:12px; margin-top:clamp(28px,4vw,40px); }
+  .gallery figure{ margin:0; min-width:0; }
+  .gallery .photo{ width:100%; height:100%; }
+  .gallery img{ width:100%; height:100%; object-fit:cover; }
+  .gallery .g-wide{ grid-column:span 2; }
+  .gallery .g-big{ grid-column:span 2; grid-row:span 2; }
+  @media (max-width:760px){
+    .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:clamp(108px,25vw,150px); }
+  }
 
   /* ---------- log ---------- */
   .log-list{ display:flex; flex-direction:column; }
@@ -512,14 +524,14 @@
         <div class="crew-card">
           <div class="crew-photo"><img src="images/georgia.jpg" alt="Georgia"></div>
           <div class="crew-name">Georgia</div>
-          <div class="crew-role">Crew &middot; Oarswoman</div>
-          <p class="crew-quote">I'm rowing for Shona &mdash; my close friend who's lived with M.E. since she was 16. If sitting in a boat for 50 days raises awareness for that, it's worth every blister.</p>
+          <div class="crew-role">Crew</div>
+          <p class="crew-quote">I'm rowing for Shona &mdash; my close friend who's lived with M.E. since she was 17. If sitting in a boat for 50 days raises awareness for that, it's worth every blister.</p>
           <p class="crew-sub">Rowing in support of Action for M.E.</p>
         </div>
         <div class="crew-card">
           <div class="crew-photo crew-photo--will"><img src="images/will.jpg" alt="Will"></div>
           <div class="crew-name">Will</div>
-          <div class="crew-role">Crew &middot; Oarsman</div>
+          <div class="crew-role">Crew</div>
           <p class="crew-quote">I'm Type 1 diabetic, which already makes normal life a bit more complicated. The Atlantic won't make that easier &mdash; so Diabetes UK felt like the obvious cause to row for.</p>
           <p class="crew-sub">Rowing in support of Diabetes UK</p>
         </div>
@@ -564,16 +576,16 @@
   <section class="section" id="charities">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title">Rowing for two causes</h2>
+        <h2 class="section-title">We're rowing for two causes:</h2>
         <p class="lede">Every mile raises awareness and funds for two conditions that already shape our own lives.</p>
       </div>
       <div class="charity-grid">
         <div class="charity-card">
-          <img src="images/logo-actionforme.png" alt="Action for M.E.">
-          <p>Myalgic Encephalomyelitis (M.E.) affects every part of a person's life &mdash; even simple physical or mental activity can leave someone utterly debilitated. Action for M.E. supports anyone living with, or caring for someone with, M.E., and funds research into a condition that's still poorly understood. We're rowing on behalf of Georgia's close friend Shona, who has lived with M.E. since she was 16.</p>
+          <div class="charity-logo"><img src="images/logo-actionforme.png" alt="Action for M.E."></div>
+          <p>Myalgic Encephalomyelitis (M.E.) affects every part of a person's life &mdash; even simple physical or mental activity can leave someone utterly debilitated. Action for M.E. supports anyone living with, or caring for someone with, M.E., and funds research into a condition that's still poorly understood. We're rowing on behalf of Georgia's close friend Shona, who has lived with M.E. since she was 17.</p>
         </div>
         <div class="charity-card">
-          <img src="images/logo-diabetesuk.png" alt="Diabetes UK">
+          <div class="charity-logo"><img src="images/logo-diabetesuk.png" alt="Diabetes UK"></div>
           <p>Diabetes UK is the country's leading charitable funder of diabetes research, working toward treatment breakthroughs and, eventually, a cure for a condition that affects 9.5&nbsp;million people worldwide. Will is Type&nbsp;1 diabetic, which will add its own layer of difficulty to 50 days at sea &mdash; and is exactly why this cause matters to us.</p>
         </div>
       </div>
@@ -829,6 +841,26 @@
     </div>
   </section>
 
+
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Gallery</span>
+        <h2 class="section-title">The road to the start line</h2>
+        <p class="lede">Our boat, the water, and the Atlantic Dash crews who have made this crossing before us. We&rsquo;ll keep adding to this as training steps up through to January 2028.</p>
+      </div>
+      <div class="gallery">
+        <figure class="g-big"><div class="photo"><img src="images/boat-image.JPG" alt="The ocean rowing boat secured for the Project Persist crossing" loading="lazy" decoding="async"></div></figure>
+        <figure><div class="photo"><img src="images/wave-splash.jpg" alt="An Atlantic wave breaking over the deck of an ocean rowing boat" loading="lazy" decoding="async"></div></figure>
+        <figure><div class="photo"><img src="images/G4.JPG" alt="Georgia rowing in a coxless four on the river at Henley" loading="lazy" decoding="async"></div></figure>
+        <figure class="g-wide"><div class="photo"><img src="images/crew-underway.jpg" alt="An Atlantic Dash crew rowing mid-ocean" loading="lazy" decoding="async"></div></figure>
+        <figure><div class="photo"><img src="images/hull-branding.jpg" alt="Sponsor logos on the hull of a previous Atlantic Dash boat" loading="lazy" decoding="async"></div></figure>
+        <figure><div class="photo"><img src="images/solo-flags.jpg" alt="A rower on deck with the Isle of Man and Antigua flags" loading="lazy" decoding="async"></div></figure>
+        <figure class="g-wide"><div class="photo"><img src="images/flares-departure.jpg" alt="A previous Atlantic Dash crew setting off flares at departure" loading="lazy" decoding="async"></div></figure>
+      </div>
+      <p class="cap">Photos from our own preparation and from past Atlantic Dash crossings &mdash; more to come as we get closer to the start line.</p>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -847,6 +879,7 @@
         <a href="#route">The Route</a>
         <a href="#crew">The Crew</a>
         <a href="#log">The Log</a>
+        <a href="#gallery">Gallery</a>
       </div>
       <div class="footer-col">
         <h5>Get Involved</h5>
