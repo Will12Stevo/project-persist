@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://projectpersist2028.com/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://projectpersist2028.com/images/og-cover.jpg</image:loc>
+      <image:title>The Project Persist ocean rowing boat in Atlantic Dash colours</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://projectpersist2028.com/images/hero-rowing.jpg</image:loc>
+      <image:title>Two-person ocean rowing boat crossing the Atlantic</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://projectpersist2028.com/images/boat-image.JPG</image:loc>
+      <image:title>The boat secured for the Project Persist Atlantic row</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://projectpersist2028.com/images/georgia.jpg</image:loc>
+      <image:title>Georgia, Project Persist Atlantic rower for Action for M.E.</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://projectpersist2028.com/images/will.jpg</image:loc>
+      <image:title>Will, Project Persist Atlantic rower for Diabetes UK</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://projectpersist2028.com/images/route-map.jpg</image:loc>
+      <image:title>Atlantic row route from Lanzarote to Antigua</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://projectpersist2028.com/images/hull-branding.jpg</image:loc>
+      <image:title>Sponsor branding on an Atlantic Dash ocean rowing boat hull</image:title>
+    </image:image>
   </url>
 </urlset>

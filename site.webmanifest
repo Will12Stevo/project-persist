@@ -1,0 +1,15 @@
+{
+  "name": "Project Persist",
+  "short_name": "Project Persist",
+  "description": "Will and Georgia's unsupported 3,200-nautical-mile Atlantic row from Lanzarote to Antigua in January 2028.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F5F7F6",
+  "theme_color": "#0F3057",
+  "lang": "en-GB",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
