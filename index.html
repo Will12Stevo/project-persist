@@ -15,7 +15,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="images/hero-rowing.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="images/crew-boat-hero.jpg" fetchpriority="high">
 <meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="Project Persist">
 <meta property="og:title" content="Project Persist | Unsupported Atlantic Row for Charity, 2028">
@@ -27,12 +27,12 @@
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Project Persist ocean rowing boat in Atlantic Dash colours">
+<meta property="og:image:alt" content="Will and Georgia with their oars beside the Project Persist ocean rowing boat">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Project Persist | Unsupported Atlantic Row for Charity, 2028">
 <meta name="twitter:description" content="Will and Georgia are rowing 3,200 nautical miles from Lanzarote to Antigua in January 2028 for Action for M.E. and Diabetes UK.">
 <meta name="twitter:image" content="https://projectpersist2028.com/images/og-cover.jpg">
-<meta name="twitter:image:alt" content="The Project Persist ocean rowing boat in Atlantic Dash colours">
+<meta name="twitter:image:alt" content="Will and Georgia with their oars beside the Project Persist ocean rowing boat">
 <title>Project Persist | Unsupported Atlantic Row for Charity, 2028</title>
 <script type="application/ld+json">
 {
@@ -94,14 +94,14 @@
       "contentUrl": "https://projectpersist2028.com/images/og-cover.jpg",
       "width": 1200,
       "height": 630,
-      "caption": "The Project Persist ocean rowing boat in Atlantic Dash colours"
+      "caption": "Will and Georgia with their oars beside the Project Persist ocean rowing boat"
     },
     {
       "@type": "Person",
       "@id": "https://projectpersist2028.com/#georgia",
       "name": "Georgia",
       "description": "Ocean rower on the Project Persist Atlantic crossing, rowing in support of Action for M.E.",
-      "image": "https://projectpersist2028.com/images/georgia.jpg",
+      "image": "https://projectpersist2028.com/images/georgia-portrait.jpg",
       "memberOf": {"@id": "https://projectpersist2028.com/#organization"}
     },
     {
@@ -109,7 +109,7 @@
       "@id": "https://projectpersist2028.com/#will",
       "name": "Will",
       "description": "Ocean rower on the Project Persist Atlantic crossing, Type 1 diabetic, rowing in support of Diabetes UK.",
-      "image": "https://projectpersist2028.com/images/will.jpg",
+      "image": "https://projectpersist2028.com/images/will-portrait.jpg",
       "memberOf": {"@id": "https://projectpersist2028.com/#organization"}
     },
     {
@@ -341,7 +341,7 @@
   .hero .lede{ color:var(--on-navy-soft); font-size:1.12rem; margin-top:16px; max-width:52ch; }
   .hero .btn-row{ margin-top:28px; }
   .hero-photo{ border-radius:var(--radius-lg); overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.35); }
-  .hero-photo img{ width:100%; display:block; }
+  .hero-photo img{ width:100%; height:auto; display:block; }
 
   .countdown{ margin-top:30px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
   .countdown-num{ font-family:var(--mono); font-weight:700; font-size:1.9rem; color:#fff; }
@@ -369,9 +369,9 @@
   .crew-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px; }
   @media (max-width:760px){ .crew-grid{ grid-template-columns:1fr; } }
   .crew-card{ display:flex; flex-direction:column; }
-  .crew-photo{ border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/3.4; }
+  .crew-photo{ border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/5; }
   .crew-photo img{ width:100%; height:100%; object-fit:cover; }
-  .crew-photo--will img{ object-position:center 20%; }
+  .crew-photo img{ object-position:center 45%; }
   .crew-name{ font-family:var(--serif); font-size:1.35rem; font-weight:600; margin-top:18px; }
   .crew-role{ font-family:var(--mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--steel-strong); margin-top:3px; }
   .crew-quote{ margin-top:14px; font-size:1rem; color:var(--ink); }
@@ -534,9 +534,9 @@
       <span class="brand-word">Project Persist</span>
       <span class="brand-sub">Atlantic Dash &middot; Jan 2028</span>
     </a>
-    <a href="#sponsor" class="nav-meter" aria-label="Fundraising progress: &pound;12,375 raised of &pound;64,000 goal">
-      <span class="nav-meter-amount">&pound;12,375 <span>/ &pound;64k</span></span>
-      <span class="nav-meter-track"><span class="nav-meter-fill" style="width:19%"></span></span>
+    <a href="#sponsor" class="nav-meter" aria-label="Fundraising progress: &pound;12,575 raised of &pound;64,000 goal">
+      <span class="nav-meter-amount">&pound;12,575 <span>/ &pound;64k</span></span>
+      <span class="nav-meter-track"><span class="nav-meter-fill" style="width:20%"></span></span>
     </a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
       <span></span><span></span><span></span>
@@ -559,8 +559,8 @@
   <div class="hero-inner">
     <div>
       <span class="kicker">Project Persist &middot; Departing January 2028</span>
-      <h1>We're rowing the Atlantic. Just the two of us.</h1>
-      <p class="lede">In January 2028, Will and Georgia are taking on 3,200 nautical miles from the Canary Islands to the Caribbean &mdash; no engine, no support boat, just a 9.8&nbsp;metre boat and each other. This is Project Persist, and we'd love you to be part of it.</p>
+      <h1>We're rowing the Atlantic, unsupported.</h1>
+      <p class="lede">In January 2028, Will and Georgia are taking on 3,200 nautical miles from the Canary Islands to the Caribbean &mdash; no engine, no support boat, no outside help. Just a 9.8&nbsp;metre boat, two sets of oars and around 50 days at sea. This is Project Persist, and we'd love you to be part of it.</p>
       <div class="btn-row">
         <a href="#sponsor" class="btn btn--primary">Become a Sponsor</a>
         <a href="#log" class="btn btn--outline">Read the Log</a>
@@ -571,7 +571,7 @@
       </div>
     </div>
     <figure class="hero-photo">
-      <img src="images/hero-rowing.jpg" alt="Will and Georgia's two-person ocean rowing boat crossing the Atlantic under Atlantic Dash colours" width="677" height="621" fetchpriority="high">
+      <img src="images/crew-boat-hero.jpg" alt="Will and Georgia in Project Persist kit with their ocean rowing boat" width="1100" height="733" fetchpriority="high">
     </figure>
   </div>
   <div class="stat-strip">
@@ -623,14 +623,14 @@
       </div>
       <div class="crew-grid">
         <div class="crew-card">
-          <div class="crew-photo"><img src="images/georgia.jpg" alt="Georgia, one half of the Project Persist crew rowing the Atlantic for Action for M.E." width="675" height="900" loading="lazy" decoding="async"></div>
+          <div class="crew-photo"><img src="images/georgia-portrait.jpg" alt="Georgia, one half of the Project Persist crew rowing the Atlantic for Action for M.E." width="867" height="1300" loading="lazy" decoding="async"></div>
           <div class="crew-name">Georgia</div>
           <div class="crew-role">Crew</div>
           <p class="crew-quote">I'm rowing for Shona &mdash; my close friend who's lived with M.E. since she was 17. If sitting in a boat for 50 days raises awareness for that, it's worth every blister.</p>
           <p class="crew-sub">Rowing in support of Action for M.E.</p>
         </div>
         <div class="crew-card">
-          <div class="crew-photo crew-photo--will"><img src="images/will.jpg" alt="Will, one half of the Project Persist crew rowing the Atlantic for Diabetes UK" width="614" height="768" loading="lazy" decoding="async"></div>
+          <div class="crew-photo crew-photo--will"><img src="images/will-portrait.jpg" alt="Will, one half of the Project Persist crew rowing the Atlantic for Diabetes UK" width="867" height="1300" loading="lazy" decoding="async"></div>
           <div class="crew-name">Will</div>
           <div class="crew-role">Crew</div>
           <p class="crew-quote">I'm Type 1 diabetic, which already makes normal life a bit more complicated. The Atlantic won't make that easier &mdash; so Diabetes UK felt like the obvious cause to row for.</p>
@@ -707,7 +707,11 @@
       <p class="cap" style="margin-bottom:8px;">Atlantic Dash crossings from past years &mdash; the community we're joining this January.</p>
       <div class="log-list" style="margin-top:24px;">
         <div class="log-entry">
-          <div class="log-date mono">18 SEP 2026</div>
+          <div class="log-date mono">30 SEP 2026</div>
+          <div><span class="log-tag log-tag--bronze">Bronze Sponsor</span><h4>DTBase joins as Bronze Sponsor</h4><p>A warm welcome to DTBase, who join us as a Bronze Sponsor. They're an educational platform providing expert tutoring, notes and first-assessment experience to exam-age students &mdash; a business founded on ambition, backing us because persistence and hard work are exactly what they hope to inspire in their own students. Thank you for the support.</p></div>
+        </div>
+        <div class="log-entry">
+          <div class="log-date mono">25 SEP 2026</div>
           <div><span class="log-tag log-tag--bronze">Bronze Sponsor</span><h4>Nostos Insurance joins as Bronze Sponsor</h4><p>We're delighted to welcome Nostos Insurance on board as our Bronze Sponsor, with a generous &pound;5,000 donation to support the crossing. Thank you to Adrian and Paul for the support &mdash; we're looking forward to building this partnership over the months ahead.</p></div>
         </div>
         <div class="log-entry">
@@ -746,9 +750,9 @@
         </div>
         <div class="fund-meter">
           <div class="fund-meter-label">Raised so far</div>
-          <div class="fund-meter-amount">&pound;12,375<span>of &pound;64,000 goal</span></div>
-          <div class="fund-meter-track"><div class="fund-meter-fill" style="width:19%"></div></div>
-          <div class="fund-meter-note">19% of the way to the start line.</div>
+          <div class="fund-meter-amount">&pound;12,575<span>of &pound;64,000 goal</span></div>
+          <div class="fund-meter-track"><div class="fund-meter-fill" style="width:20%"></div></div>
+          <div class="fund-meter-note">20% of the way to the start line.</div>
         </div>
       </div>
 
@@ -951,13 +955,14 @@
         <p class="lede">Our boat, the water, and the Atlantic Dash crews who have made this crossing before us. We&rsquo;ll keep adding to this as training steps up through to January 2028.</p>
       </div>
       <div class="gallery">
-        <figure class="g-big"><div class="photo"><img src="images/boat-image.JPG" alt="The ocean rowing boat secured for the Project Persist crossing" loading="lazy" decoding="async" width="1100" height="825"></div></figure>
+        <figure class="g-big"><div class="photo"><img src="images/crew-with-oars.jpg" alt="Will and Georgia with their oars beside the Project Persist ocean rowing boat" loading="lazy" decoding="async" width="1200" height="800"></div></figure>
+        <figure><div class="photo"><img src="images/boat-image.JPG" alt="The ocean rowing boat secured for the Project Persist crossing" loading="lazy" decoding="async" width="1100" height="825"></div></figure>
+        <figure><div class="photo"><img src="images/hero-rowing.jpg" alt="A two-person ocean rowing boat under Atlantic Dash colours mid-Atlantic" loading="lazy" decoding="async" width="677" height="621"></div></figure>
+        <figure class="g-wide"><div class="photo"><img src="images/crew-underway.jpg" alt="An Atlantic Dash crew rowing mid-ocean" loading="lazy" decoding="async" width="864" height="519"></div></figure>
         <figure><div class="photo"><img src="images/wave-splash.jpg" alt="An Atlantic wave breaking over the deck of an ocean rowing boat" loading="lazy" decoding="async" width="416" height="616"></div></figure>
         <figure><div class="photo"><img src="images/G4.JPG" alt="Georgia rowing in a coxless four on the river at Henley" loading="lazy" decoding="async" width="1000" height="667"></div></figure>
-        <figure class="g-wide"><div class="photo"><img src="images/crew-underway.jpg" alt="An Atlantic Dash crew rowing mid-ocean" loading="lazy" decoding="async" width="864" height="519"></div></figure>
         <figure><div class="photo"><img src="images/hull-branding.jpg" alt="Sponsor logos on the hull of a previous Atlantic Dash boat" loading="lazy" decoding="async" width="1150" height="767"></div></figure>
         <figure><div class="photo"><img src="images/solo-flags.jpg" alt="A rower on deck with the Isle of Man and Antigua flags" loading="lazy" decoding="async" width="665" height="627"></div></figure>
-        <figure class="g-wide"><div class="photo"><img src="images/flares-departure.jpg" alt="A previous Atlantic Dash crew setting off flares at departure" loading="lazy" decoding="async" width="1100" height="527"></div></figure>
       </div>
       <p class="cap">Photos from our own preparation and from past Atlantic Dash crossings &mdash; more to come as we get closer to the start line.</p>
     </div>
