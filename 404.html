@@ -60,5 +60,20 @@
       <a class="btn btn--outline" href="/#contact">Get in touch</a>
     </div>
   </main>
+  <script>
+    // Only track if the visitor already accepted analytics on the main page
+    (function(){
+      var GA_ID = 'G-B1QG48S3JB';
+      try { if (localStorage.getItem('pp-analytics-consent') !== 'granted') return; } catch(e){ return; }
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+    })();
+  </script>
 </body>
 </html>

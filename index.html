@@ -536,6 +536,15 @@
   .footer-col a{ display:block; text-decoration:none; color:var(--on-navy-soft); font-size:.9rem; padding:5px 0; }
   .footer-col a:hover{ color:#fff; }
   .footer-bottom{ max-width:var(--maxw); margin:34px auto 0; padding-inline:clamp(20px,4vw,40px); padding-top:22px; border-top:1px solid rgba(255,255,255,.1); font-size:.8rem; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; }
+  .footer-cookies{ font:inherit; color:var(--on-navy-soft); background:none; border:none; padding:0; text-decoration:underline; cursor:pointer; }
+  .footer-cookies:hover{ color:#fff; }
+
+  /* ---------- cookie banner ---------- */
+  .cookie-banner{ position:fixed; left:16px; right:16px; bottom:16px; z-index:100; max-width:560px; margin-inline:auto; background:var(--navy); color:var(--on-navy); border-radius:var(--radius-md); box-shadow:var(--shadow); padding:20px 22px; }
+  .cookie-banner[hidden]{ display:none; }
+  .cookie-banner p{ font-size:.9rem; color:var(--on-navy-soft); margin:0; }
+  .cookie-banner .btn-row{ margin-top:14px; gap:10px; }
+  .cookie-banner .btn{ padding:10px 20px; font-size:.88rem; }
 </style>
 </head>
 <body>
@@ -681,14 +690,17 @@
             <figure class="slideshow-slide"><div class="photo"><img src="images/ines-cycling.jpg" alt="Ines cycle touring on a loaded bike beneath snow-capped mountains" loading="lazy" decoding="async" width="1138" height="1600"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-mountain-hike.jpg" alt="Will hiking through a high mountain landscape" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/G2.JPG" alt="Georgia holding a signal flag on a multi-day canoe expedition" loading="lazy" decoding="async" width="462" height="1000"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/mardi-himal-base-camp.jpg" alt="Standing beside the Mardi Himal Base Camp sign at 4,500m beneath the Annapurna range in Nepal" loading="lazy" decoding="async" width="1600" height="1067"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-bridge.jpg" alt="Will sitting beside a mountain railway bridge" loading="lazy" decoding="async" width="1000" height="562"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/G3.JPG" alt="Georgia draped playfully over a giant snowball" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-snow-forest.jpg" alt="Will snowshoeing through a snowy forest" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/ines-trek.jpg" alt="Ines trekking above turquoise glacial lakes in the mountains" loading="lazy" decoding="async" width="1600" height="1066"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/snow-ridge-climb.jpg" alt="Climbing a snowy, pine-covered mountain ridge with a loaded backpack and trekking poles" loading="lazy" decoding="async" width="1600" height="1200"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/G4.JPG" alt="Georgia rowing in a coxless four on the river at Henley" loading="lazy" decoding="async" width="1000" height="667"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-glacier-hike.jpg" alt="A mountain glacier and rocky hiking trail" loading="lazy" decoding="async" width="1000" height="562"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/G5.JPG" alt="Georgia bouldering on an indoor climbing wall" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-desert-climb.jpg" alt="Will climbing across a sunlit mountain landscape" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/mt-whitney-summit.jpg" alt="Holding the summit sign on top of Mt. Whitney at 14,505 feet" loading="lazy" decoding="async" width="1600" height="1067"></div></figure>
           </div>
         </div>
         <div class="slideshow-controls">
@@ -1057,9 +1069,71 @@
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026&ndash;2028 Project Persist &middot; Will, Georgia &amp; Ines</span>
-    <span>Built ahead of a January 2028 departure.</span>
+    <span>Built ahead of a January 2028 departure. <button class="footer-cookies" type="button" data-cookie-settings>Cookie settings</button></span>
   </div>
 </footer>
+
+<div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>Can we use Google Analytics cookies to count visits? It just tells us how many people are following the row and where they found us. No ads, no selling data.</p>
+  <div class="btn-row">
+    <button class="btn btn--primary" type="button" data-cookie-accept>Accept</button>
+    <button class="btn btn--outline" type="button" data-cookie-decline>No thanks</button>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var GA_ID = 'G-B1QG48S3JB';
+    var KEY = 'pp-analytics-consent';
+    var banner = document.getElementById('cookie-banner');
+    var loaded = false;
+
+    function getChoice(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+    function setChoice(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+
+    function loadAnalytics(){
+      if (loaded) return;
+      loaded = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+    }
+
+    // Remove any GA cookies left over from an earlier "Accept"
+    function clearAnalytics(){
+      if (loaded) gtag('consent', 'update', { analytics_storage: 'denied' });
+      document.cookie.split(';').forEach(function(c){
+        var name = c.split('=')[0].trim();
+        if (name.indexOf('_ga') !== 0) return;
+        document.cookie = name + '=; Max-Age=0; path=/';
+        document.cookie = name + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '');
+      });
+    }
+
+    banner.querySelector('[data-cookie-accept]').addEventListener('click', function(){
+      setChoice('granted');
+      banner.hidden = true;
+      loadAnalytics();
+    });
+    banner.querySelector('[data-cookie-decline]').addEventListener('click', function(){
+      setChoice('denied');
+      banner.hidden = true;
+      clearAnalytics();
+    });
+    document.querySelector('[data-cookie-settings]').addEventListener('click', function(){
+      banner.hidden = false;
+    });
+
+    var choice = getChoice();
+    if (choice === 'granted') loadAnalytics();
+    else if (choice !== 'denied') banner.hidden = false;
+  })();
+</script>
 
 <script>
   (function(){
