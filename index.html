@@ -54,7 +54,7 @@
         "height": 260
       },
       "image": "https://projectpersist2028.com/images/og-cover.jpg",
-      "sameAs": ["https://instagram.com/projectpersist", "https://www.gofundme.com/f/persistence-atlantic-row-2028"],
+      "sameAs": ["https://instagram.com/project.persist", "https://www.gofundme.com/f/persistence-atlantic-row-2028"],
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Sponsorship enquiries",
@@ -327,6 +327,9 @@
   .nav-links{ display:flex; align-items:center; gap:clamp(14px,2vw,26px); font-size:.92rem; font-weight:500; }
   .nav-links a{ text-decoration:none; color:var(--on-navy-soft); white-space:nowrap; }
   .nav-links a:hover{ color:var(--on-navy); }
+  .nav-insta{ display:inline-flex; align-items:center; gap:7px; }
+  .nav-insta svg{ width:19px; height:19px; flex:none; }
+  .nav-insta span{ display:none; }
   .nav-cta{ background:var(--flare-strong); color:#fff !important; padding:9px 16px; border-radius:999px; font-weight:700; font-size:.86rem; }
   .nav-cta:hover{ background:var(--flare); }
   .nav-toggle{ display:none; background:none; border:0; cursor:pointer; padding:8px; margin:-8px; flex-direction:column; gap:5px; }
@@ -341,6 +344,7 @@
     .nav-links.is-open{ transform:translateY(0); opacity:1; pointer-events:auto; }
     .nav-links a{ padding:12px 4px; border-bottom:1px solid rgba(255,255,255,.06); }
     .nav-cta{ margin-top:10px; text-align:center; }
+    .nav-insta span{ display:inline; }
     .nav-toggle{ display:flex; }
   }
 
@@ -364,6 +368,10 @@
   .hero h1{ font-size:clamp(2.1rem,3.2vw + 1.1rem,3.3rem); color:#fff; margin-top:10px; }
   .hero .lede{ color:var(--on-navy-soft); font-size:1.12rem; margin-top:16px; max-width:52ch; }
   .hero .btn-row{ margin-top:28px; }
+  .hero-insta{ display:inline-flex; align-items:center; gap:9px; margin-top:20px; color:var(--on-navy-soft); text-decoration:none; font-size:.95rem; }
+  .hero-insta svg{ width:20px; height:20px; flex:none; color:var(--brass); }
+  .hero-insta strong{ color:var(--on-navy); }
+  .hero-insta:hover strong{ text-decoration:underline; }
   .hero-photo{ border-radius:var(--radius-lg); overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.35); }
   .hero-photo img{ width:100%; height:auto; display:block; }
 
@@ -586,6 +594,7 @@
       <a href="#log">Log</a>
       <a href="#sponsor">Sponsor</a>
       <a href="#faq">FAQ</a>
+      <a href="https://instagram.com/project.persist" class="nav-insta" target="_blank" rel="noopener" aria-label="Follow @project.persist on Instagram"><svg aria-hidden="true"><use href="#icon-insta"/></svg><span>@project.persist</span></a>
       <a href="#contact" class="nav-cta">Become a Sponsor</a>
     </div>
   </div>
@@ -603,6 +612,7 @@
         <a href="#sponsor" class="btn btn--primary">Become a Sponsor</a>
         <a href="#log" class="btn btn--outline">Read the Log</a>
       </div>
+      <a href="https://instagram.com/project.persist" class="hero-insta" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-insta"/></svg>Follow along on Instagram <strong>@project.persist</strong></a>
       <div class="countdown">
         <span class="countdown-num tabular" id="cd-days">&ndash;</span>
         <span class="countdown-text">days until the January 2028 departure window<br>(exact date confirmed by Atlantic Dash closer to the time)</span>
@@ -682,10 +692,10 @@
           <p class="crew-sub">Rowing in support of Kom op tegen Kanker</p>
         </div>
         <div class="crew-card">
-          <div class="crew-photo"><img src="images/jentel-portrait.jpg" alt="Jentel, Project Persist crew member rowing the Atlantic for Football Academy Noah" width="1170" height="1424" loading="lazy" decoding="async"></div>
+          <div class="crew-photo"><img src="images/jentel-portrait.jpg" alt="Jentel, Project Persist crew member rowing the Atlantic for Football Academy Noah" width="1200" height="1600" loading="lazy" decoding="async"></div>
           <div class="crew-name">Jentel</div>
           <div class="crew-role">Crew</div>
-          <p class="crew-quote">Football Academy Noah does brilliant stuff for kids in South Africa. If me sitting in a rowing boat for 50 days gets a few more of them playing football, I'm in.</p>
+          <p class="crew-quote">Football Academy Noah gives young people in South Africa opportunities through football. I'm rowing for 50 days in memory of my dear friend Noah, to help give even more children those same opportunities.</p>
           <p class="crew-sub">Rowing in support of Football Academy Noah</p>
         </div>
       </div>
@@ -705,11 +715,13 @@
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-skiing.jpg" alt="Will skiing on a snowy mountain slope" loading="lazy" decoding="async" width="1000" height="562"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/G1.JPG" alt="Georgia looking out over a Norwegian fjord from a mountain summit" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/ines-cycling.jpg" alt="Ines cycle touring on a loaded bike beneath snow-capped mountains" loading="lazy" decoding="async" width="1138" height="1600"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/jentel-alps-hike.jpg" style="object-position:center 45%;" alt="Jentel hiking past snowfields and a waterfall in the Alps" loading="lazy" decoding="async" width="1473" height="1600"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-mountain-hike.jpg" alt="Will hiking through a high mountain landscape" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/G2.JPG" alt="Georgia holding a signal flag on a multi-day canoe expedition" loading="lazy" decoding="async" width="462" height="1000"></div></figure>
-            <figure class="slideshow-slide"><div class="photo"><img src="images/jentel-marathon-des-sables.jpg" alt="Jentel celebrating with a finisher's medal after an ultramarathon" loading="lazy" decoding="async" width="1170" height="731"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/jentel-school-visit.jpg" style="object-position:center 25%;" alt="Jentel with a pupil at a school in KwaZulu-Natal, South Africa" loading="lazy" decoding="async" width="1200" height="1600"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/mardi-himal-base-camp.jpg" alt="Standing beside the Mardi Himal Base Camp sign at 4,500m beneath the Annapurna range in Nepal" loading="lazy" decoding="async" width="1600" height="1067"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-bridge.jpg" alt="Will sitting beside a mountain railway bridge" loading="lazy" decoding="async" width="1000" height="562"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/jentel-speaking.jpg" style="object-position:center 20%;" alt="Jentel giving a talk, holding a page of notes" loading="lazy" decoding="async" width="1067" height="1600"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/G3.JPG" alt="Georgia draped playfully over a giant snowball" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-snow-forest.jpg" alt="Will snowshoeing through a snowy forest" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/ines-trek.jpg" alt="Ines trekking above turquoise glacial lakes in the mountains" loading="lazy" decoding="async" width="1600" height="1066"></div></figure>
@@ -717,9 +729,10 @@
             <figure class="slideshow-slide"><div class="photo"><img src="images/G4.JPG" alt="Georgia rowing in a coxless four on the river at Henley" loading="lazy" decoding="async" width="1000" height="667"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-glacier-hike.jpg" alt="A mountain glacier and rocky hiking trail" loading="lazy" decoding="async" width="1000" height="562"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/G5.JPG" alt="Georgia bouldering on an indoor climbing wall" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
-            <figure class="slideshow-slide"><div class="photo"><img src="images/jentel-trail-race.jpg" style="object-position:center 8%;" alt="Jentel and a friend celebrating mid-race on a forest trail at La Chouffe Trail" loading="lazy" decoding="async" width="1169" height="1394"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/jentel-trail-running.jpg" alt="Jentel trail running beneath a glacier at the Ultra Tour Monte Rosa" loading="lazy" decoding="async" width="1080" height="720"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/will-desert-climb.jpg" alt="Will climbing across a sunlit mountain landscape" loading="lazy" decoding="async" width="750" height="1000"></div></figure>
             <figure class="slideshow-slide"><div class="photo"><img src="images/mt-whitney-summit.jpg" alt="Holding the summit sign on top of Mt. Whitney at 14,505 feet" loading="lazy" decoding="async" width="1600" height="1067"></div></figure>
+            <figure class="slideshow-slide"><div class="photo"><img src="images/jentel-school-selfie.jpg" alt="Jentel pulling a face in a selfie with a pupil at a school in South Africa" loading="lazy" decoding="async" width="1200" height="1600"></div></figure>
           </div>
         </div>
         <div class="slideshow-controls">
@@ -754,7 +767,7 @@
         </div>
         <div class="charity-card">
           <div class="charity-logo"><a class="charity-wordmark" href="https://footballacademynoah.com/" target="_blank" rel="noopener">Football Academy Noah</a></div>
-          <p>Football Academy Noah (FAN) runs football as an extra-curricular activity in 34 schools around Mtubatuba in KwaZulu-Natal, one of the poorest areas of South Africa. Through coaching and teamwork, children build the life and social skills to make the most of their futures. Jentel is rowing to raise funds and awareness for their work.</p>
+          <p>Football Academy Noah (FAN) runs football as an extra-curricular activity in 34 schools around Mtubatuba in KwaZulu-Natal, one of the poorest areas of South Africa. Through coaching and teamwork, children build the life and social skills to make the most of their futures. The academy was founded by the father of Jentel's friend Noah, who passed away 11 years ago, and Jentel is rowing in Noah's memory.</p>
         </div>
       </div>
     </div>
@@ -821,7 +834,7 @@
         </div>
         <div class="log-entry">
           <div class="log-date mono">05 SEP 2026</div>
-          <div><h4>Welcome to Project Persist</h4><p>This is where we'll be posting as training ramps up, sponsors come on board, and January 2028 gets closer. Follow along here or on Instagram <strong>@projectpersist</strong>.</p></div>
+          <div><h4>Welcome to Project Persist</h4><p>This is where we'll be posting as training ramps up, sponsors come on board, and January 2028 gets closer. Follow along here or on Instagram <strong>@project.persist</strong>.</p></div>
         </div>
       </div>
       <p class="log-note">More to follow as training and fundraising continue toward January 2028.</p>
@@ -1028,7 +1041,7 @@
           <div class="contact-list">
             <a href="mailto:projectpersist2028@gmail.com"><svg><use href="#icon-mail"/></svg>projectpersist2028@gmail.com</a>
             <a href="tel:+447485169644"><svg><use href="#icon-phone"/></svg>07485 169644</a>
-            <a href="https://instagram.com/projectpersist" target="_blank" rel="noopener"><svg><use href="#icon-insta"/></svg>@projectpersist</a>
+            <a href="https://instagram.com/project.persist" target="_blank" rel="noopener"><svg><use href="#icon-insta"/></svg>@project.persist</a>
           </div>
           <div class="contact-divider"></div>
           <div class="coord-sub mono" style="color:var(--on-navy-soft)">28.8&deg;N 13.8&deg;W &rarr; 17.0&deg;N 61.8&deg;W</div>
@@ -1089,7 +1102,7 @@
       </div>
       <div class="footer-col">
         <h5>Follow</h5>
-        <a href="https://instagram.com/projectpersist" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://instagram.com/project.persist" target="_blank" rel="noopener">Instagram</a>
         <a href="mailto:projectpersist2028@gmail.com">Email</a>
       </div>
     </div>
