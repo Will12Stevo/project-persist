@@ -195,7 +195,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,400;1,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
 <style>
   :root{
     --ink:#101E30; --ink-soft:#2D3B4F;
@@ -209,9 +209,9 @@
     --shadow:0 1px 2px rgba(8,27,48,.06), 0 10px 28px rgba(8,27,48,.09);
     --radius-lg:20px; --radius-md:12px; --radius-sm:6px;
     --maxw:1140px;
-    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
-    --sans:'Karla', -apple-system, 'Segoe UI', Roboto, sans-serif;
-    --mono:'Space Mono', 'SFMono-Regular', Consolas, monospace;
+    --serif:'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --sans:'Source Sans 3', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mono:'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -376,14 +376,14 @@
   .hero-photo img{ width:100%; height:auto; display:block; }
 
   .countdown{ margin-top:30px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
-  .countdown-num{ font-family:var(--mono); font-weight:700; font-size:1.9rem; color:#fff; }
+  .countdown-num{ font-family:var(--serif); font-weight:800; font-size:2rem; color:#fff; }
   .countdown-text{ font-size:.92rem; color:var(--on-navy-soft); }
 
   .stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(255,255,255,.12); }
   .stat-strip div{ padding:18px clamp(14px,3vw,26px); border-left:1px solid rgba(255,255,255,.12); }
   .stat-strip div:first-child{ border-left:none; }
   @media (max-width:640px){ .stat-strip{ grid-template-columns:repeat(2,1fr); } .stat-strip div:nth-child(3){ border-left:none; } }
-  .stat-num{ font-family:var(--mono); font-weight:700; font-size:clamp(1.2rem,1.8vw,1.5rem); color:#fff; }
+  .stat-num{ font-family:var(--serif); font-weight:800; font-size:clamp(1.6rem,2.4vw,2.1rem); color:#fff; }
   .stat-label{ font-family:var(--mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--on-navy-soft); margin-top:4px; }
 
   /* ---------- intro note ---------- */
@@ -624,7 +624,7 @@
   </div>
   <div class="stat-strip">
     <div><div class="stat-num tabular">6,000+</div><div class="stat-label">Kilometres</div></div>
-    <div><div class="stat-num tabular">&le;50</div><div class="stat-label">Days at Sea</div></div>
+    <div><div class="stat-num tabular">50+</div><div class="stat-label">Days at Sea</div></div>
     <div><div class="stat-num tabular">4</div><div class="stat-label">Rowers</div></div>
     <div><div class="stat-num tabular">0</div><div class="stat-label">Engine / Support Boat</div></div>
   </div>
