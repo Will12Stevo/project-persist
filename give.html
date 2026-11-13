@@ -431,21 +431,16 @@
   <header class="hero">
     <div class="hero-inner hero-inner--paths">
       <div>
-        <span class="kicker">Support Project Persist</span>
-        <h1>Two ways to back the crossing.</h1>
-        <p class="lede">Help get the boat to the start line, or give straight to the four charities we're rowing for. The two are kept completely separate, so you always know exactly where your money goes.</p>
+        <span class="kicker">Support the crew</span>
+        <h1>Back the crossing.</h1>
+        <p class="lede">Fund the row, or give to the four charities we're rowing for. The two never mix.</p>
       </div>
       <div class="paths">
         <a class="path path--row" href="#give" data-go="row">
-          <span class="path-tag">Option 1 &middot; Fund the row</span>
+          <span class="path-tag">The row</span>
           <h2>Back the row</h2>
-          <p>Sponsor a kilometre, a meal or a shift at the oars. This pays for the things that get four people across an ocean.</p>
-          <ul class="path-points">
-            <li>Boat, safety and navigation kit</li>
-            <li>Food for 50+ days at sea</li>
-            <li>Race entry, shipping and training</li>
-          </ul>
-          <div class="dest"><svg><use href="#i-oar"/></svg><span>Goes to <b>Project Persist</b>. Not a charity donation.</span></div>
+          <p>Sponsor a kilometre, a meal or a night at the oars. It pays for the boat, kit and food that get us across.</p>
+          <div class="dest"><svg><use href="#i-oar"/></svg><span>Goes to Project Persist, not to charity.</span></div>
           <div class="path-meter">
             <div class="path-meter-top"><span><strong class="tabular" id="m-row-raised">&pound;0</strong> raised</span><span id="m-row-goal">of &pound;0</span></div>
             <div class="path-meter-track"><div class="path-meter-fill" id="m-row-fill" style="width:0%"></div></div>
@@ -453,16 +448,16 @@
           <span class="path-cta">Back the row <span aria-hidden="true">&rarr;</span></span>
         </a>
         <a class="path path--charity" href="#give" data-go="charity">
-          <span class="path-tag">Option 2 &middot; Donate to charity</span>
+          <span class="path-tag">Charity</span>
           <h2>Give to charity</h2>
-          <p>Every penny goes to the four charities we're rowing for, split equally. None of it is spent on the row.</p>
+          <p>Every penny goes to our four charities, split equally.</p>
           <div class="path-logos" aria-label="Our charities">
             <span><img src="images/logo-actionforme.png" alt="Action for M.E." width="220" height="192"></span>
             <span><img src="images/logo-diabetesuk.png" alt="Diabetes UK" width="278" height="58"></span>
             <span><img src="images/logo-kotk.svg" alt="Kom op tegen Kanker" width="507" height="359"></span>
             <span><img src="images/logo-fan.png" alt="Football Academy Noah" width="442" height="235"></span>
           </div>
-          <div class="dest"><svg><use href="#i-heart"/></svg><span>Goes to <b>our 4 charities</b>, 25% each.</span></div>
+          <div class="dest"><svg><use href="#i-heart"/></svg><span>25% to each charity. None of it goes on the row.</span></div>
           <div class="path-meter">
             <div class="path-meter-top"><span><strong class="tabular" id="m-ch-raised">&pound;0</strong> raised</span><span id="m-ch-goal">of &pound;0</span></div>
             <div class="path-meter-track"><div class="path-meter-fill" id="m-ch-fill" style="width:0%"></div></div>
@@ -485,17 +480,17 @@
       <form class="donate-grid" id="donate-form" novalidate>
         <div>
           <div class="panel" id="charity-step" hidden>
-            <div class="step-head"><span class="step-num">01</span><div><h3>Choose an amount</h3><p>Split equally between all four charities.</p></div></div>
+            <div class="step-head"><div><h3>Amount</h3></div></div>
             <div class="amount-chips" id="amount-chips"></div>
             <div class="custom-row">
-              <label for="c-custom" style="font-weight:700; font-size:.92rem; display:block; margin-bottom:8px;">Or enter your own amount</label>
+              <label for="c-custom" style="font-weight:700; font-size:.92rem; display:block; margin-bottom:8px;">Other amount</label>
               <div class="money-input"><span>&pound;</span><input id="c-custom" type="number" inputmode="decimal" min="2" step="1" placeholder="Other"></div>
             </div>
             <p class="charity-hint" id="charity-hint"></p>
           </div>
 
           <div class="panel" id="row-step">
-            <div class="step-head"><span class="step-num">01</span><div><h3>Choose what to sponsor</h3><p>Every option funds the row itself.</p></div></div>
+            <div class="step-head"><div><h3>What to sponsor</h3></div></div>
             <div class="impact-grid" role="radiogroup" aria-label="Donation type" id="impact-grid"></div>
 
             <div class="qty-row" id="qty-row">
@@ -516,10 +511,10 @@
           </div>
 
           <div class="panel">
-            <div class="step-head"><span class="step-num">02</span><div><h3>Make it a tribute</h3><p>Optional. Dedicate your donation to someone.</p></div></div>
+            <div class="step-head"><div><h3>Dedicate it</h3><p>Optional.</p></div></div>
             <label class="check">
               <input type="checkbox" id="tribute-on">
-              <div><strong>Dedicate this donation</strong><span>We'll show the dedication on our supporters wall.</span></div>
+              <div><strong>Give in someone's name</strong><span>Shown on the supporters wall.</span></div>
             </label>
             <div class="tribute-body" id="tribute-body" hidden>
               <div class="field">
@@ -541,7 +536,7 @@
           </div>
 
           <div class="panel">
-            <div class="step-head"><span class="step-num">03</span><div><h3>Your details</h3></div></div>
+            <div class="step-head"><div><h3>Your details</h3></div></div>
             <div class="field-row">
               <div class="field">
                 <label for="d-name">Full name</label>
@@ -550,16 +545,16 @@
               <div class="field">
                 <label for="d-email">Email</label>
                 <input type="email" id="d-email" autocomplete="email" required>
-                <span class="field-hint">For your receipt. We'll never share it.</span>
+                <span class="field-hint">For your receipt.</span>
               </div>
             </div>
             <div class="field">
               <label for="d-message">Message for the crew <span style="font-weight:400; color:var(--ink-soft)">(optional)</span></label>
-              <textarea id="d-message" maxlength="200" placeholder="Something to read on day 37..."></textarea>
+              <textarea id="d-message" maxlength="200" placeholder="Something to read on day 37"></textarea>
             </div>
             <label class="check">
               <input type="checkbox" id="d-anon">
-              <div><strong>Keep my name off the supporters wall</strong><span>Your donation will show as "Anonymous".</span></div>
+              <div><strong>Hide my name on the wall</strong><span>You'll show as Anonymous.</span></div>
             </label>
             <label class="check">
               <input type="checkbox" id="d-fees" checked>
@@ -575,8 +570,7 @@
           <div class="summary-total"><span>Total</span><strong class="tabular" id="s-total">&pound;0</strong></div>
           <div class="summary-line" id="s-fee-line"><span>Includes card fee</span><span class="tabular" id="s-fee">&pound;0.00</span></div>
           <div id="s-row-goes" class="row-goes">
-            <strong><span>Project Persist row costs</span><span id="s-row-amt">&pound;0</span></strong>
-            <p>Boat, kit, food, race entry and training. This is not a donation to charity.</p>
+            <strong><span>Reaches the row</span><span id="s-row-amt">&pound;0</span></strong>
           </div>
           <div id="s-charity-goes" hidden>
             <div class="split-bar" aria-hidden="true">
@@ -588,7 +582,6 @@
           <p class="summary-error" id="s-error" role="alert"></p>
           <button type="button" class="switch-link" id="s-switch"></button>
           <div class="secure"><svg><use href="#i-lock"/></svg>Secure payment by Stripe</div>
-          <div class="pay-methods" aria-label="Accepted payment methods"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>APPLE PAY</span><span>GOOGLE PAY</span></div>
         </aside>
       </form>
     </div>
@@ -597,48 +590,43 @@
   <section class="section section--alt" id="where">
     <div class="container">
       <div class="section-head">
-        <span class="kicker">Where your money goes</span>
-        <h2 class="section-title">What each fund means</h2>
-        <p class="lede">Money for the row and money for charity are kept in separate funds from the moment you pay. Neither one ever tops up the other.</p>
+        <span class="kicker">Where it goes</span>
+        <h2 class="section-title">Two funds, kept apart</h2>
       </div>
       <div class="pots">
         <div class="pot">
           <span class="path-tag" style="--p:var(--row)">Back the row</span>
-          <h3>Goes to Project Persist</h3>
-          <p>Pays for the boat, safety and navigation kit, food for 50+ days, race entry, shipping and training. It isn't a charity donation, so it can't have Gift Aid added.</p>
+          <h3>The row</h3>
+          <p>Boat, safety kit, food for 50+ days, race entry and shipping. Not a charity donation, so no Gift Aid.</p>
         </div>
         <div class="pot pot--charity">
           <span class="path-tag" style="--p:var(--charity)">Give to charity</span>
-          <h3>Goes to our four charities</h3>
-          <p>Split equally, 25% each. We pass it on in regular instalments and post every transfer in the Log on our main site.</p>
+          <h3>The charities</h3>
+          <p>Split four ways. We send it on in instalments and post every transfer in the <a href="/#log">Log</a>.</p>
         </div>
       </div>
       <h3 class="sub-head">The four charities</h3>
       <div class="charity-grid">
         <article class="charity" style="--accent:var(--c-ame)">
           <div class="charity-logo"><img src="images/logo-actionforme.png" alt="Action for M.E." width="220" height="192" loading="lazy"></div>
-          <div class="charity-share">25%<small>of every charity donation</small></div>
           <h4>Action for M.E.</h4>
           <p>Supports people living with M.E. and those who care for them, and funds research into a condition that's still poorly understood.</p>
           <div class="rower">Georgia is rowing for them</div>
         </article>
         <article class="charity" style="--accent:var(--c-duk)">
           <div class="charity-logo"><img src="images/logo-diabetesuk.png" alt="Diabetes UK" width="278" height="58" loading="lazy"></div>
-          <div class="charity-share">25%<small>of every charity donation</small></div>
           <h4>Diabetes UK</h4>
           <p>The UK's leading charitable funder of diabetes research, working toward better treatments and, one day, a cure.</p>
           <div class="rower">Will is rowing for them</div>
         </article>
         <article class="charity" style="--accent:var(--c-kotk)">
           <div class="charity-logo"><img src="images/logo-kotk.svg" alt="Kom op tegen Kanker" width="507" height="359" loading="lazy"></div>
-          <div class="charity-share">25%<small>of every charity donation</small></div>
           <h4>Kom op tegen Kanker</h4>
           <p>A Flemish charity supporting people living with cancer and their families, and funding research into treatment, care and prevention.</p>
           <div class="rower">Ines is rowing for them</div>
         </article>
         <article class="charity" style="--accent:var(--c-fan)">
           <div class="charity-logo"><img src="images/logo-fan.png" alt="Football Academy Noah" width="442" height="235" loading="lazy"></div>
-          <div class="charity-share">25%<small>of every charity donation</small></div>
           <h4>Football Academy Noah</h4>
           <p>Runs football in 34 schools around Mtubatuba, KwaZulu-Natal, helping children in one of South Africa's poorest areas build life and social skills.</p>
           <div class="rower">Jentel is rowing for them</div>
@@ -650,8 +638,8 @@
   <section class="section" id="supporters" hidden>
     <div class="container">
       <div class="section-head">
-        <span class="kicker">Supporters wall</span>
-        <h2 class="section-title">Thank you to everyone rowing with us</h2>
+        <span class="kicker">Supporters</span>
+        <h2 class="section-title">Everyone rowing with us</h2>
       </div>
       <div class="supporters" id="supporters-list"></div>
       <div style="text-align:center; margin-top:22px"><button type="button" class="btn btn--ghost" id="supporters-more" hidden></button></div>
@@ -663,36 +651,36 @@
       <div class="section-head"><h2 class="section-title">Questions</h2></div>
       <div class="faq">
         <details>
-          <summary>What's the difference between backing the row and giving to charity?</summary>
-          <p>Backing the row (sponsoring a kilometre, a meal, a shift and so on) pays for the crossing itself: the boat, kit, food, race entry and training. Giving to charity goes only to our four charities. The two are kept in separate pots and never mixed.</p>
+          <summary>What's the difference between the two?</summary>
+          <p>Backing the row pays for the crossing: boat, kit, food and race entry. Giving to charity goes to our four charities. They're kept in separate pots.</p>
         </details>
         <details>
           <summary>Does my charity donation pay for the row?</summary>
-          <p>No. Not a penny of a charity donation is spent on the row. The row is funded by us, our business sponsors and people who choose "Back the row".</p>
+          <p>No. The row is paid for by us, our sponsors and people who back the row.</p>
         </details>
         <details>
           <summary>Is backing the row a charity donation?</summary>
-          <p>No. Project Persist isn't a registered charity, so money for the row is a contribution to our expedition costs. It isn't tax-deductible and Gift Aid can't be added. If you want your money to go to charity, choose "Give to charity".</p>
+          <p>No. We're not a registered charity, so it isn't tax-deductible and Gift Aid can't be added.</p>
         </details>
         <details>
           <summary>How is a charity donation split?</summary>
-          <p>Equally. Each of Action for M.E., Diabetes UK, Kom op tegen Kanker and Football Academy Noah receives 25% of what you give. If you tick "cover the card fee", they receive 25% of your full chosen amount.</p>
+          <p>Equally: 25% each to Action for M.E., Diabetes UK, Kom op tegen Kanker and Football Academy Noah.</p>
         </details>
         <details>
           <summary>Is it secure?</summary>
-          <p>Payments are processed by Stripe, which handles card payments for millions of businesses worldwide. Your card details go straight to Stripe and never touch our website.</p>
+          <p>Yes. Payments go through Stripe, and your card details never touch our site.</p>
         </details>
         <details>
           <summary>Can I claim Gift Aid?</summary>
-          <p>Not on this page. Charity donations come to Project Persist first and are then passed on, and money for the row isn't a charity donation at all. If Gift Aid matters to you, you can give to Action for M.E. or Diabetes UK directly through their own websites.</p>
+          <p>Not here. If Gift Aid matters to you, give to Action for M.E. or Diabetes UK directly.</p>
         </details>
         <details>
-          <summary>When do the charities receive the money?</summary>
-          <p>We pass donations on to each charity in regular instalments and will post every transfer in the Log on our main site, so you can see exactly where it went.</p>
+          <summary>When do the charities get the money?</summary>
+          <p>We send it in instalments and post every transfer in the <a href="/#log">Log</a>.</p>
         </details>
         <details>
           <summary>I'd like to give as a business</summary>
-          <p>Brilliant. Have a look at our <a href="/#sponsor">sponsorship packages</a>, which include your logo on the boat, or <a href="/#contact">get in touch</a>.</p>
+          <p>See our <a href="/#sponsor">sponsorship packages</a> or <a href="/#contact">get in touch</a>.</p>
         </details>
       </div>
     </div>
@@ -721,27 +709,25 @@
             <h2>Your gift</h2>
             <dl class="receipt" id="t-receipt"></dl>
             <div class="t-split-wrap" id="t-split-wrap" hidden>
-              <h3>How it's shared</h3>
+              <h3>Split</h3>
               <ul class="split-list" id="t-split"></ul>
             </div>
           </div>
           <div class="t-card" id="t-wall-card" hidden>
-            <h2>On the supporters wall</h2>
-            <p class="t-sub">This is how you'll appear on our supporters wall.</p>
+            <h2>On the wall</h2>
             <div class="t-wall" id="t-wall"></div>
           </div>
         </div>
         <div class="thanks-col">
           <div class="t-card" id="t-progress" hidden>
-            <h2 id="t-progress-title">Where we're at now</h2>
+            <h2 id="t-progress-title">Raised so far</h2>
             <div class="t-big tabular"><span id="t-raised"></span><small id="t-goal"></small></div>
             <div class="t-meter" aria-hidden="true"><i class="before" id="t-bar-before"></i><i class="yours" id="t-bar-yours"></i></div>
             <div class="t-legend"><span style="--k:var(--p)">Raised before you</span><span style="--k:var(--brass)">Your gift</span></div>
             <p class="t-sub" id="t-pct" style="margin-top:12px"></p>
           </div>
           <div class="t-card">
-            <h2>Help us get further</h2>
-            <p class="t-sub">One share can bring in the next supporter. It really helps.</p>
+            <h2>Share</h2>
             <div class="share-grid">
               <a class="share-btn share-btn--wa" id="t-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a>
               <button type="button" class="share-btn" id="t-copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Copy link</button>
@@ -749,10 +735,6 @@
               <button type="button" class="share-btn" id="t-share" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>More&hellip;</button>
             </div>
             <p class="t-copied" id="t-copied" role="status"></p>
-          </div>
-          <div class="t-card">
-            <h2>What happens next</h2>
-            <ol class="next-list" id="t-next"></ol>
           </div>
         </div>
       </div>
@@ -793,33 +775,33 @@
     ];
 
     var OPTIONS = [
-      { id: 'km',     icon: 'i-oar',   title: 'Sponsor a kilometre', price: 5,   unit: 'per km',  desc: '6,000+ km from Lanzarote to Antigua. Pick as many as you like.', qty: true, noun: ['kilometre of ocean', 'kilometres of ocean'], chips: [1, 10, 26, 50, 100] },
-      { id: 'meal',   icon: 'i-meal',  title: 'Sponsor a meal',      price: 12,  unit: 'per meal', desc: 'Freeze-dried, rehydrated and eaten on a rolling deck.', qty: true, noun: ['meal at sea', 'meals at sea'], chips: [1, 3, 6, 24] },
-      { id: 'hour',   icon: 'i-clock', title: 'Sponsor an hour at the oars', price: 25, unit: 'per hour', desc: 'We row round the clock in shifts, day and night.', qty: true, noun: ['hour at the oars', 'hours at the oars'], chips: [1, 2, 4, 12] },
-      { id: 'day',    icon: 'i-sun',   title: 'Sponsor a day at sea', price: 100, unit: 'per day', desc: 'Pick a day of the crossing and it\'s yours. We\'ll shout you out on it.', qty: true, noun: ['day at sea', 'days at sea'], chips: [1, 2, 5] },
-      { id: 'night',  icon: 'i-moon',  title: 'Sponsor a night shift', price: 50, unit: 'per night', desc: 'The 2am stint in the dark, when it\'s hardest to keep going.', qty: true, noun: ['night shift', 'night shifts'], chips: [1, 2, 4] },
-      { id: 'custom', icon: 'i-heart', title: 'Back the row, any amount', price: null, unit: '', desc: 'Put whatever you like towards getting us across.', qty: false }
+      { id: 'km',     icon: 'i-oar',   title: 'Sponsor a kilometre', price: 5,   unit: 'per km',  desc: '6,000+ km from Lanzarote to Antigua.', qty: true, noun: ['kilometre of ocean', 'kilometres of ocean'], chips: [1, 10, 26, 50, 100] },
+      { id: 'meal',   icon: 'i-meal',  title: 'Sponsor a meal',      price: 12,  unit: 'per meal', desc: 'Freeze-dried, eaten on a rolling deck.', qty: true, noun: ['meal at sea', 'meals at sea'], chips: [1, 3, 6, 24] },
+      { id: 'hour',   icon: 'i-clock', title: 'Sponsor an hour at the oars', price: 25, unit: 'per hour', desc: 'We row round the clock in shifts.', qty: true, noun: ['hour at the oars', 'hours at the oars'], chips: [1, 2, 4, 12] },
+      { id: 'day',    icon: 'i-sun',   title: 'Sponsor a day at sea', price: 100, unit: 'per day', desc: 'A day of the crossing, with a shout-out.', qty: true, noun: ['day at sea', 'days at sea'], chips: [1, 2, 5] },
+      { id: 'night',  icon: 'i-moon',  title: 'Sponsor a night shift', price: 50, unit: 'per night', desc: 'The 2am shift, when it\'s hardest.', qty: true, noun: ['night shift', 'night shifts'], chips: [1, 2, 4] },
+      { id: 'custom', icon: 'i-heart', title: 'Any amount', price: null, unit: '', desc: 'Whatever you like, towards the row.', qty: false }
     ];
 
     var CHARITY_AMOUNTS = [10, 25, 50, 100, 250];
 
     var COPY = {
       row: {
-        note: '<b>Backing the row</b> pays for the crossing itself: boat, kit, food and race entry. It goes to Project Persist, not to charity.',
+        note: 'Pays for the boat, kit, food and race entry. Goes to Project Persist, not to charity.',
         title: 'Backing the row',
-        dest: '<svg><use href="#i-oar"/></svg><span>Goes to <b>Project Persist</b>. Not a charity donation.</span>',
+        dest: '<svg><use href="#i-oar"/></svg><span>Goes to Project Persist, not to charity.</span>',
         feeWhy: 'So the full amount reaches the row.',
         cta: 'Back the row',
-        switchTo: 'Want your money to go to charity instead?',
+        switchTo: 'Give to charity instead',
         checkout: 'Back the Project Persist row'
       },
       charity: {
-        note: '<b>Giving to charity</b> goes only to our four charities, split equally. None of it is spent on the row.',
+        note: 'Split equally between our four charities. None of it goes on the row.',
         title: 'Donating to charity',
-        dest: '<svg><use href="#i-heart"/></svg><span>Goes to <b>our 4 charities</b>, 25% each.</span>',
-        feeWhy: 'So the charities receive your full donation.',
+        dest: '<svg><use href="#i-heart"/></svg><span>25% to each charity.</span>',
+        feeWhy: 'So the charities get the full amount.',
         cta: 'Donate',
-        switchTo: 'Want to help fund the row instead?',
+        switchTo: 'Back the row instead',
         checkout: 'Donate to Project Persist\'s four charities'
       }
     };
@@ -1000,14 +982,20 @@
     function renderSupporters(list){
       if (!list.length) { $('supporters').hidden = true; return; }
       $('supporters').hidden = false;
-      var SHOW = 9;
-      $('supporters-list').innerHTML = list.map(function(s, i){ return supporterHTML(s).replace('<div class="supporter"', '<div class="supporter"' + (i >= SHOW ? ' hidden' : '')); }).join('');
-      $('supporters-more').hidden = list.length <= SHOW;
-      $('supporters-more').textContent = 'Show all ' + list.length + ' supporters';
+      $('supporters-list').innerHTML = list.map(function(s, i){
+        return supporterHTML(s).replace('<div class="supporter"', '<div class="supporter' + (i >= WALL_SHOW ? ' is-extra" hidden' : '"'));
+      }).join('');
+      wallTotal = list.length;
+      wallOpen = false;
+      $('supporters-more').hidden = list.length <= WALL_SHOW;
+      $('supporters-more').textContent = 'See all ' + wallTotal;
     }
+    var WALL_SHOW = 9, wallTotal = 0, wallOpen = false;
     $('supporters-more').addEventListener('click', function(){
-      document.querySelectorAll('#supporters-list .supporter[hidden]').forEach(function(el){ el.hidden = false; });
-      this.hidden = true;
+      wallOpen = !wallOpen;
+      document.querySelectorAll('#supporters-list .is-extra').forEach(function(el){ el.hidden = !wallOpen; });
+      this.textContent = wallOpen ? 'See less' : 'See all ' + wallTotal;
+      if (!wallOpen) $('supporters').scrollIntoView({ block: 'start' });
     });
     function supporterHTML(s){
       var k = s.kind === 'row' ? '<span class="supporter-kind" style="--k:var(--row)">Backed the row</span>' : '<span class="supporter-kind" style="--k:var(--charity)">Gave to charity</span>';
@@ -1077,17 +1065,17 @@
 
       $('t-title').textContent = s.firstName ? 'Thank you, ' + s.firstName + '!' : 'Thank you!';
       $('t-lede').textContent = isCharity
-        ? 'Your donation is on its way to the four charities we\'re rowing for. It means a lot to all four of us.'
-        : (s.what && s.what !== 'Backed the row' ? 'You\'ve sponsored ' + s.what + '. ' : 'You\'ve backed the row. ') + 'That goes straight into getting the boat across the Atlantic.';
+        ? 'Your donation is going to our four charities.'
+        : (s.what && s.what !== 'Backed the row' ? 'You\'ve sponsored ' + s.what + '.' : 'You\'ve backed the row.') + ' See you in Antigua.';
 
       // receipt
       var rows = [];
-      if (s.what) rows.push(['You gave', isCharity ? 'A donation to our four charities' : (s.what === 'Backed the row' ? 'A contribution to the row' : s.what)]);
+      if (s.what) rows.push(['You gave', isCharity ? 'Charity donation' : (s.what === 'Backed the row' ? 'Any amount' : s.what)]);
       rows.push(['Fund', '<span class="fund-tag">' + (isCharity ? 'Charity' : 'Back the row') + '</span>', true]);
-      if (s.total) rows.push(['Amount paid', '<span class="amt">' + money(s.total, 2) + '</span>', true]);
-      if (s.total && s.total - base >= 0.01) rows.push(['Includes card fee cover', money(s.total - base, 2)]);
+      if (s.total) rows.push(['Paid', '<span class="amt">' + money(s.total, 2) + '</span>', true]);
+      if (s.total && s.total - base >= 0.01) rows.push(['Card fee cover', money(s.total - base, 2)]);
       if (s.tribute) rows.push(['Dedication', s.tribute]);
-      if (s.email) rows.push(['Receipt sent to', s.email]);
+      if (s.email) rows.push(['Receipt to', s.email]);
       $('t-receipt').innerHTML = rows.map(function(r){ return '<dt>' + r[0] + '</dt><dd>' + (r[2] ? r[1] : esc(r[1])) + '</dd>'; }).join('');
 
       $('t-split-wrap').hidden = !isCharity || !base;
@@ -1105,12 +1093,12 @@
         var beforePct = Math.min(100, Math.max(0, t.raised - base) / t.goal * 100);
         var yoursPct = Math.max(1.5, Math.min(100 - beforePct, base / t.goal * 100));
         var pct = Math.min(100, t.raised / t.goal * 100);
-        $('t-progress-title').textContent = isCharity ? 'Raised for our charities' : 'Raised for the row';
+        $('t-progress-title').textContent = isCharity ? 'Raised for charity' : 'Raised for the row';
         $('t-raised').textContent = money(t.raised, 0);
         $('t-goal').textContent = 'of ' + money(t.goal, 0);
         $('t-pct').textContent = isCharity
-          ? Math.floor(pct) + '% of our ' + money(t.goal, 0) + ' charity target. Thank you for helping us get there.'
-          : Math.floor(pct) + '% of the way to the start line. Every bit gets us closer to Antigua.';
+          ? Math.floor(pct) + '% of our target.'
+          : Math.floor(pct) + '% of the way to the start line.';
         $('t-progress').hidden = false;
         requestAnimationFrame(function(){ requestAnimationFrame(function(){
           $('t-bar-before').style.width = beforePct + '%';
@@ -1120,25 +1108,12 @@
 
       // share
       var text = isCharity
-        ? 'I just donated to the four charities Project Persist are rowing the Atlantic for. Back them here:'
-        : 'I just sponsored Project Persist\'s 6,000 km row across the Atlantic. Back them here:';
+        ? 'I just gave to the charities Project Persist are rowing the Atlantic for:'
+        : 'I just sponsored Project Persist\'s row across the Atlantic:';
       $('t-wa').href = 'https://wa.me/?text=' + encodeURIComponent(text + ' ' + SHARE_URL);
       $('t-share').hidden = !navigator.share;
 
-      // next steps
-      var inbox = 'Your receipt is in your inbox' + (s.email ? ' (' + esc(s.email) + ')' : '') + '.';
-      var next = isCharity ? [
-        inbox,
-        'We pass charity donations on to all four charities in regular instalments, 25% each.',
-        'Every transfer is posted in the <a href="/#log">Log</a> on our main site, so you can see exactly where it went.'
-      ] : [
-        inbox,
-        'Your money goes into the boat fund: boat, safety kit, food and race entry.',
-        'We set off from Lanzarote in January 2028. Follow the build-up and the crossing in the <a href="/#log">Log</a> and on <a href="https://instagram.com/project.persist" target="_blank" rel="noopener">Instagram</a>.'
-      ];
-      $('t-next').innerHTML = next.map(function(n){ return '<li><span>' + n + '</span></li>'; }).join('');
-
-      $('t-again-text').textContent = isCharity ? 'Fancy helping get the boat to the start line too?' : 'Want to give something to our four charities as well?';
+      $('t-again-text').textContent = isCharity ? 'Back the row too?' : 'Give to charity too?';
       $('t-again-btn').textContent = isCharity ? 'Back the row' : 'Give to charity';
 
       $('confirm-main').hidden = true;
