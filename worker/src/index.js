@@ -146,8 +146,8 @@ async function session(url, env, cors) {
   if (m.source !== SOURCE) return json({ error: 'Not found' }, 404, cors);
 
   const paid = s.payment_status === 'paid';
-  // A new donation just landed, so drop the cached totals and the meters update straight away.
-  if (paid && env.CACHE) await env.CACHE.delete('totals');
+  // A new donation just landed, so rebuild the cached totals now and the meters update straight away.
+  if (paid) await totals(env, cors, true);
 
   return json({
     paid,
@@ -161,11 +161,11 @@ async function session(url, env, cors) {
 }
 
 // ---------- totals ----------
-async function totals(env, cors) {
+async function totals(env, cors, force) {
   const ttl = Math.max(30, parseInt(env.CACHE_SECONDS, 10) || 120);
-  if (env.CACHE) {
+  if (env.CACHE && !force) {
     const hit = await env.CACHE.get('totals');
-    if (hit) return new Response(hit, { headers: { ...cors, 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=30' } });
+    if (hit) return new Response(hit, { headers: { ...cors, 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
   }
 
   const hidden = new Set(String(env.HIDDEN_SUPPORTERS || '').split(',').map(s => s.trim()).filter(Boolean));
@@ -229,7 +229,7 @@ async function totals(env, cors) {
     updated: new Date().toISOString()
   });
   if (env.CACHE) await env.CACHE.put('totals', body, { expirationTtl: Math.max(60, ttl) });
-  return new Response(body, { headers: { ...cors, 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=30' } });
+  return new Response(body, { headers: { ...cors, 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
 }
 
 // ---------- helpers ----------
