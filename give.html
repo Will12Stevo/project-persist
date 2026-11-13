@@ -1012,7 +1012,7 @@
     function supporterHTML(s){
       var k = s.kind === 'row' ? '<span class="supporter-kind" style="--k:var(--row)">Backed the row</span>' : '<span class="supporter-kind" style="--k:var(--charity)">Gave to charity</span>';
       return '<div class="supporter"><div class="supporter-top"><span class="supporter-name">' + esc(s.name) + '</span><span class="supporter-amt tabular">' + money(s.amount, 0) + '</span></div>' +
-        '<div class="supporter-what">' + esc(s.what) + '</div>' + k +
+        (s.what ? '<div class="supporter-what">' + esc(s.what) + '</div>' : '') + k +
         (s.tribute ? '<div class="supporter-tribute">' + esc(s.tribute) + '</div>' : '') +
         (s.msg ? '<p class="supporter-msg">' + esc(s.msg) + '</p>' : '') + '</div>';
     }

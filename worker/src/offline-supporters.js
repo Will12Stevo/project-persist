@@ -7,7 +7,7 @@
 //   amount  in pounds
 //   date    'YYYY-MM-DD', used to order the wall (newest first)
 //   kind    'row' or 'charity' (optional, defaults to 'row')
-//   what    short label (optional, defaults to 'Donated on GoFundMe')
+//   what    short label, e.g. '2 days at sea' (optional)
 //   msg     message to show (optional)
 //
 // After editing, run `npx wrangler deploy` from the worker folder.

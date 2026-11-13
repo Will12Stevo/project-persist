@@ -228,7 +228,7 @@ async function totals(env, cors, force) {
       kind: o.kind === 'charity' ? 'charity' : 'row',
       name: String(o.name),
       amount: num(o.amount),
-      what: o.what || 'Donated on GoFundMe',
+      what: o.what || '',
       msg: o.msg || '',
       tribute: o.tribute || '',
       at: Math.floor((Date.parse(o.date) || 0) / 1000)
