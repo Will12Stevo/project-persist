@@ -123,6 +123,8 @@ async function checkout(request, env, cors) {
   // Send donors back to the site they came from (live site, or localhost while testing).
   const origin = request.headers.get('Origin') || '';
   const site = (cors['Access-Control-Allow-Origin'] === origin && origin ? origin : env.SITE_URL).replace(/\/$/, '');
+  // Local preview servers (e.g. VS Code Live Server) need the .html extension.
+  const page = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(site) ? '/give.html' : '/give';
   const s = await stripe(env, 'POST', '/v1/checkout/sessions', {
     mode: 'payment',
     submit_type: mode === 'charity' ? 'donate' : 'pay',
@@ -133,8 +135,8 @@ async function checkout(request, env, cors) {
       description: mode === 'charity' ? 'Charity donation' : 'Row: ' + what,
       metadata
     },
-    success_url: `${site}/give?paid=1&session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${site}/give${mode === 'charity' ? '#charity' : '#give'}`
+    success_url: `${site}${page}?paid=1&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${site}${page}${mode === 'charity' ? '#charity' : '#give'}`
   });
   return json({ url: s.url }, 200, cors);
 }
