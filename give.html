@@ -337,13 +337,58 @@
   @keyframes spin{ to{ transform:rotate(360deg); } }
 
   /* ---------- thank you ---------- */
-  .thanks{ text-align:center; max-width:640px; margin-inline:auto; }
-  .thanks-icon{ width:64px; height:64px; margin:0 auto; border-radius:50%; background:var(--success); color:#fff; display:grid; place-items:center; }
+  .confirming{ display:flex; flex-direction:column; align-items:center; gap:14px; padding-block:120px; color:var(--ink-soft); }
+  .confirming .btn-spinner{ width:28px; height:28px; color:var(--steel); }
+  #thanks-main[data-fund="row"]{ --p:var(--row); --p-soft:var(--row-soft); }
+  #thanks-main[data-fund="charity"]{ --p:var(--charity); --p-soft:var(--charity-soft); }
+  .thanks-hero{ background:var(--navy); color:var(--on-navy); padding-block:clamp(48px,7vw,84px); text-align:center; }
+  .thanks-icon{ width:64px; height:64px; margin:0 auto; border-radius:50%; background:#2E9E66; color:#fff; display:grid; place-items:center; box-shadow:0 0 0 8px rgba(46,158,102,.18); animation:pop .5s cubic-bezier(.2,1.4,.4,1) both; }
   .thanks-icon svg{ width:30px; height:30px; }
-  .thanks h2{ font-size:clamp(1.8rem,2.4vw + 1rem,2.4rem); margin-top:18px; }
-  .thanks .lede{ margin-inline:auto; }
-  .thanks .split-list{ text-align:left; max-width:360px; margin:22px auto 0; }
-  .thanks .btn-row{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:26px; }
+  @keyframes pop{ from{ transform:scale(.4); opacity:0; } }
+  .thanks-hero .kicker{ display:block; color:var(--brass); margin-top:22px; }
+  .thanks-hero h1{ font-size:clamp(2rem,3vw + 1rem,3rem); font-weight:800; margin-top:8px; }
+  .thanks-hero h1:focus{ outline:none; }
+  .thanks-hero p{ color:var(--on-navy-soft); font-size:1.1rem; max-width:56ch; margin:14px auto 0; }
+  .thanks-grid{ display:grid; grid-template-columns:1.05fr 1fr; gap:20px; align-items:start; }
+  @media (max-width:860px){ .thanks-grid{ grid-template-columns:1fr; } }
+  .thanks-col{ display:flex; flex-direction:column; gap:20px; min-width:0; }
+  .t-card{ background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-lg); padding:clamp(20px,3vw,28px); box-shadow:var(--shadow); }
+  .t-card h2{ font-size:1.15rem; font-weight:700; }
+  .t-card .t-sub{ color:var(--ink-soft); font-size:.92rem; margin-top:4px; }
+  .t-card a{ color:var(--p); font-weight:600; }
+  .receipt{ margin:16px 0 0; display:grid; grid-template-columns:auto 1fr; gap:0 16px; font-size:.95rem; }
+  .receipt dt, .receipt dd{ margin:0; padding:11px 0; border-bottom:1px solid var(--line-soft); }
+  .receipt dt{ color:var(--ink-soft); }
+  .receipt dd{ text-align:right; font-weight:600; overflow-wrap:anywhere; }
+  .receipt dt:nth-last-child(2), .receipt dd:last-child{ border-bottom:0; }
+  .receipt .amt{ font-family:var(--mono); font-weight:700; font-size:1.1rem; }
+  .fund-tag{ display:inline-block; font-family:var(--mono); font-size:.68rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 9px; border-radius:999px; color:var(--p); background:color-mix(in srgb, var(--p) 13%, transparent); }
+  .t-split-wrap{ margin-top:18px; padding-top:16px; border-top:1px solid var(--line); }
+  .t-split-wrap h3{ font-size:.95rem; font-weight:700; }
+  .t-big{ font-family:var(--serif); font-weight:800; font-size:clamp(2rem,3vw + .8rem,2.6rem); line-height:1; margin-top:14px; }
+  .t-big small{ font-family:var(--sans); font-weight:500; font-size:.95rem; color:var(--ink-soft); margin-left:6px; }
+  .t-meter{ height:12px; border-radius:999px; background:var(--surface-alt); margin-top:14px; overflow:hidden; display:flex; }
+  .t-meter i{ display:block; height:100%; width:0; transition:width 1.1s cubic-bezier(.2,.8,.2,1); }
+  .t-meter .before{ background:var(--p); }
+  .t-meter .yours{ background:var(--brass); transition-delay:.5s; }
+  .t-legend{ display:flex; flex-wrap:wrap; gap:6px 16px; margin-top:10px; font-size:.82rem; color:var(--ink-soft); }
+  .t-legend span{ display:inline-flex; align-items:center; gap:6px; }
+  .t-legend span::before{ content:""; width:10px; height:10px; border-radius:3px; background:var(--k); }
+  .share-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+  .share-btn{ display:flex; align-items:center; justify-content:center; gap:9px; padding:12px 14px; border-radius:var(--radius-md); border:1.5px solid var(--line); background:transparent; color:var(--ink) !important; font-weight:700; font-size:.92rem; text-decoration:none; cursor:pointer; }
+  .share-btn:hover{ border-color:var(--ink-soft); }
+  .share-btn svg{ width:18px; height:18px; flex:none; }
+  .share-btn--wa{ background:#1F8F4E; border-color:#1F8F4E; color:#fff !important; }
+  .share-btn--wa:hover{ background:#197A42; border-color:#197A42; }
+  .t-copied{ font-size:.82rem; color:var(--success); margin-top:10px; min-height:1.3em; overflow-wrap:anywhere; }
+  .next-list{ margin:14px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:12px; counter-reset:n; }
+  .next-list li{ display:flex; gap:12px; font-size:.94rem; }
+  .next-list li::before{ counter-increment:n; content:counter(n); flex:none; width:24px; height:24px; border-radius:50%; display:grid; place-items:center; font-family:var(--mono); font-size:.75rem; font-weight:700; background:var(--p-soft); color:var(--p); }
+  .t-wall{ margin-top:14px; }
+  .t-wall .supporter{ border-color:var(--line); }
+  .t-again{ text-align:center; margin-top:clamp(28px,4vw,40px); }
+  .t-again p{ color:var(--ink-soft); }
+  .t-again .btn-row{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:14px; }
 
   /* ---------- footer ---------- */
   footer{ background:var(--navy-deep); color:var(--on-navy-soft); padding-block:34px; font-size:.85rem; }
@@ -609,6 +654,7 @@
         <h2 class="section-title">Thank you to everyone rowing with us</h2>
       </div>
       <div class="supporters" id="supporters-list"></div>
+      <div style="text-align:center; margin-top:22px"><button type="button" class="btn btn--ghost" id="supporters-more" hidden></button></div>
     </div>
   </section>
 
@@ -653,18 +699,71 @@
   </section>
 </main>
 
-<main id="thanks-main" hidden>
-  <section class="section">
-    <div class="container thanks">
+<main id="confirm-main" hidden>
+  <div class="confirming" role="status"><span class="btn-spinner"></span>Confirming your payment&hellip;</div>
+</main>
+
+<main id="thanks-main" data-fund="row" hidden>
+  <section class="thanks-hero">
+    <div class="container">
       <div class="thanks-icon"><svg><use href="#i-check"/></svg></div>
-      <h2 id="t-title">Thank you!</h2>
-      <p class="lede" id="t-lede"></p>
-      <ul class="split-list" id="t-split"></ul>
-      <div class="btn-row">
-        <button type="button" class="btn btn--primary" id="t-share">Share the row</button>
-        <a href="/" class="btn btn--ghost">Back to Project Persist</a>
+      <span class="kicker">Payment confirmed</span>
+      <h1 id="t-title" tabindex="-1">Thank you!</h1>
+      <p id="t-lede"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="thanks-grid">
+        <div class="thanks-col">
+          <div class="t-card">
+            <h2>Your gift</h2>
+            <dl class="receipt" id="t-receipt"></dl>
+            <div class="t-split-wrap" id="t-split-wrap" hidden>
+              <h3>How it's shared</h3>
+              <ul class="split-list" id="t-split"></ul>
+            </div>
+          </div>
+          <div class="t-card" id="t-wall-card" hidden>
+            <h2>On the supporters wall</h2>
+            <p class="t-sub">This is how you'll appear on our supporters wall.</p>
+            <div class="t-wall" id="t-wall"></div>
+          </div>
+        </div>
+        <div class="thanks-col">
+          <div class="t-card" id="t-progress" hidden>
+            <h2 id="t-progress-title">Where we're at now</h2>
+            <div class="t-big tabular"><span id="t-raised"></span><small id="t-goal"></small></div>
+            <div class="t-meter" aria-hidden="true"><i class="before" id="t-bar-before"></i><i class="yours" id="t-bar-yours"></i></div>
+            <div class="t-legend"><span style="--k:var(--p)">Raised before you</span><span style="--k:var(--brass)">Your gift</span></div>
+            <p class="t-sub" id="t-pct" style="margin-top:12px"></p>
+          </div>
+          <div class="t-card">
+            <h2>Help us get further</h2>
+            <p class="t-sub">One share can bring in the next supporter. It really helps.</p>
+            <div class="share-grid">
+              <a class="share-btn share-btn--wa" id="t-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a>
+              <button type="button" class="share-btn" id="t-copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Copy link</button>
+              <a class="share-btn" href="https://instagram.com/project.persist" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Follow us</a>
+              <button type="button" class="share-btn" id="t-share" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>More&hellip;</button>
+            </div>
+            <p class="t-copied" id="t-copied" role="status"></p>
+          </div>
+          <div class="t-card">
+            <h2>What happens next</h2>
+            <ol class="next-list" id="t-next"></ol>
+          </div>
+        </div>
       </div>
-      <p class="sample-note" id="t-copied" hidden>Link copied to clipboard.</p>
+
+      <div class="t-again">
+        <p id="t-again-text"></p>
+        <div class="btn-row">
+          <button type="button" class="btn btn--primary" id="t-again-btn"></button>
+          <a href="/" class="btn btn--ghost">Back to Project Persist</a>
+        </div>
+      </div>
     </div>
   </section>
 </main>
@@ -901,8 +1000,15 @@
     function renderSupporters(list){
       if (!list.length) { $('supporters').hidden = true; return; }
       $('supporters').hidden = false;
-      $('supporters-list').innerHTML = list.map(supporterHTML).join('');
+      var SHOW = 9;
+      $('supporters-list').innerHTML = list.map(function(s, i){ return supporterHTML(s).replace('<div class="supporter"', '<div class="supporter"' + (i >= SHOW ? ' hidden' : '')); }).join('');
+      $('supporters-more').hidden = list.length <= SHOW;
+      $('supporters-more').textContent = 'Show all ' + list.length + ' supporters';
     }
+    $('supporters-more').addEventListener('click', function(){
+      document.querySelectorAll('#supporters-list .supporter[hidden]').forEach(function(el){ el.hidden = false; });
+      this.hidden = true;
+    });
     function supporterHTML(s){
       var k = s.kind === 'row' ? '<span class="supporter-kind" style="--k:var(--row)">Backed the row</span>' : '<span class="supporter-kind" style="--k:var(--charity)">Gave to charity</span>';
       return '<div class="supporter"><div class="supporter-top"><span class="supporter-name">' + esc(s.name) + '</span><span class="supporter-amt tabular">' + money(s.amount, 0) + '</span></div>' +
@@ -961,29 +1067,100 @@
     window.addEventListener('pageshow', function(e){ if (e.persisted) { $('s-submit').disabled = false; update(); } });
 
     // ---------- thank you (Stripe sends donors back to /give?paid=1&session_id=...) ----------
+    var SHARE_URL = 'https://projectpersist2028.com/give';
     var thanksFund = 'row';
     function showThanks(s){
-      thanksFund = s.fund;
+      var fund = thanksFund = s.fund === 'charity' ? 'charity' : 'row';
+      var isCharity = fund === 'charity';
+      var base = s.base || s.total || 0;
+      $('thanks-main').dataset.fund = fund;
+
       $('t-title').textContent = s.firstName ? 'Thank you, ' + s.firstName + '!' : 'Thank you!';
-      var lede = s.fund === 'charity'
-        ? 'Your donation of ' + money(s.total, 2) + ' is going to our four charities, split equally.'
-        : 'You\'ve sponsored ' + (s.what === 'Backed the row' ? 'the row' : s.what) + '. That goes straight into getting the boat across the Atlantic.';
-      if (s.email) lede += ' A receipt is on its way to ' + s.email + '.';
-      if (s.tribute) lede += ' It\'s dedicated ' + s.tribute.charAt(0).toLowerCase() + s.tribute.slice(1) + '.';
-      $('t-lede').textContent = lede;
-      $('t-split').hidden = s.fund !== 'charity';
-      $('t-split').innerHTML = s.fund === 'charity' ? splitHTML(Math.floor(s.total / CHARITIES.length * 100) / 100) : '';
+      $('t-lede').textContent = isCharity
+        ? 'Your donation is on its way to the four charities we\'re rowing for. It means a lot to all four of us.'
+        : (s.what && s.what !== 'Backed the row' ? 'You\'ve sponsored ' + s.what + '. ' : 'You\'ve backed the row. ') + 'That goes straight into getting the boat across the Atlantic.';
+
+      // receipt
+      var rows = [];
+      if (s.what) rows.push(['You gave', isCharity ? 'A donation to our four charities' : (s.what === 'Backed the row' ? 'A contribution to the row' : s.what)]);
+      rows.push(['Fund', '<span class="fund-tag">' + (isCharity ? 'Charity' : 'Back the row') + '</span>', true]);
+      if (s.total) rows.push(['Amount paid', '<span class="amt">' + money(s.total, 2) + '</span>', true]);
+      if (s.total && s.total - base >= 0.01) rows.push(['Includes card fee cover', money(s.total - base, 2)]);
+      if (s.tribute) rows.push(['Dedication', s.tribute]);
+      if (s.email) rows.push(['Receipt sent to', s.email]);
+      $('t-receipt').innerHTML = rows.map(function(r){ return '<dt>' + r[0] + '</dt><dd>' + (r[2] ? r[1] : esc(r[1])) + '</dd>'; }).join('');
+
+      $('t-split-wrap').hidden = !isCharity || !base;
+      $('t-split').innerHTML = isCharity && base ? splitHTML(Math.floor(base / CHARITIES.length * 100) / 100) : '';
+
+      // supporters wall preview
+      if (s.wallName) {
+        $('t-wall').innerHTML = supporterHTML({ kind: fund, name: s.wallName, amount: base, what: s.what || '', msg: s.message || '', tribute: s.tribute || '' });
+        $('t-wall-card').hidden = false;
+      }
+
+      // progress, with this gift highlighted
+      var t = s.fundTotals;
+      if (t && t.goal) {
+        var beforePct = Math.min(100, Math.max(0, t.raised - base) / t.goal * 100);
+        var yoursPct = Math.max(1.5, Math.min(100 - beforePct, base / t.goal * 100));
+        var pct = Math.min(100, t.raised / t.goal * 100);
+        $('t-progress-title').textContent = isCharity ? 'Raised for our charities' : 'Raised for the row';
+        $('t-raised').textContent = money(t.raised, 0);
+        $('t-goal').textContent = 'of ' + money(t.goal, 0);
+        $('t-pct').textContent = isCharity
+          ? Math.floor(pct) + '% of our ' + money(t.goal, 0) + ' charity target. Thank you for helping us get there.'
+          : Math.floor(pct) + '% of the way to the start line. Every bit gets us closer to Antigua.';
+        $('t-progress').hidden = false;
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){
+          $('t-bar-before').style.width = beforePct + '%';
+          $('t-bar-yours').style.width = yoursPct + '%';
+        }); });
+      }
+
+      // share
+      var text = isCharity
+        ? 'I just donated to the four charities Project Persist are rowing the Atlantic for. Back them here:'
+        : 'I just sponsored Project Persist\'s 6,000 km row across the Atlantic. Back them here:';
+      $('t-wa').href = 'https://wa.me/?text=' + encodeURIComponent(text + ' ' + SHARE_URL);
+      $('t-share').hidden = !navigator.share;
+
+      // next steps
+      var inbox = 'Your receipt is in your inbox' + (s.email ? ' (' + esc(s.email) + ')' : '') + '.';
+      var next = isCharity ? [
+        inbox,
+        'We pass charity donations on to all four charities in regular instalments, 25% each.',
+        'Every transfer is posted in the <a href="/#log">Log</a> on our main site, so you can see exactly where it went.'
+      ] : [
+        inbox,
+        'Your money goes into the boat fund: boat, safety kit, food and race entry.',
+        'We set off from Lanzarote in January 2028. Follow the build-up and the crossing in the <a href="/#log">Log</a> and on <a href="https://instagram.com/project.persist" target="_blank" rel="noopener">Instagram</a>.'
+      ];
+      $('t-next').innerHTML = next.map(function(n){ return '<li><span>' + n + '</span></li>'; }).join('');
+
+      $('t-again-text').textContent = isCharity ? 'Fancy helping get the boat to the start line too?' : 'Want to give something to our four charities as well?';
+      $('t-again-btn').textContent = isCharity ? 'Back the row' : 'Give to charity';
+
+      $('confirm-main').hidden = true;
       $('donate-main').hidden = true;
       $('thanks-main').hidden = false;
       window.scrollTo(0, 0);
-      $('t-title').setAttribute('tabindex', '-1');
       $('t-title').focus();
     }
+    $('t-copy').addEventListener('click', function(){
+      var done = function(){ $('t-copied').textContent = 'Link copied. Paste it anywhere.'; };
+      var fail = function(){ $('t-copied').textContent = SHARE_URL; };
+      if (navigator.clipboard) navigator.clipboard.writeText(SHARE_URL).then(done, fail); else fail();
+    });
     $('t-share').addEventListener('click', function(){
       var text = thanksFund === 'charity' ? 'I just donated to Project Persist\'s four charities.' : 'I just sponsored Project Persist\'s Atlantic row.';
-      var data = { title: 'Project Persist', text: text, url: 'https://projectpersist2028.com/give' };
-      if (navigator.share) { navigator.share(data).catch(function(){}); return; }
-      if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(function(){ $('t-copied').hidden = false; });
+      navigator.share({ title: 'Project Persist', text: text, url: SHARE_URL }).catch(function(){});
+    });
+    $('t-again-btn').addEventListener('click', function(){
+      $('thanks-main').hidden = true;
+      $('donate-main').hidden = false;
+      setMode(thanksFund === 'charity' ? 'row' : 'charity');
+      $('give').scrollIntoView();
     });
 
     selectOption(OPTIONS[0], true);
@@ -998,12 +1175,27 @@
     }
 
     var params = new URLSearchParams(location.search);
+    // Preview the thank-you screen with sample data: /give?preview=thanks or ?preview=thanks-charity
+    if (/^thanks/.test(params.get('preview') || '')) {
+      var pc = params.get('preview') === 'thanks-charity';
+      showThanks({
+        fund: pc ? 'charity' : 'row', what: pc ? 'Gave to charity' : '3 meals at sea', base: pc ? 25 : 36, total: pc ? 25.59 : 36.76,
+        firstName: 'Sam', wallName: 'Sam Example', message: 'Go on you four!', tribute: '', email: 'sam@example.com',
+        fundTotals: pc ? { raised: 1672, goal: 10000 } : { raised: 13316, goal: 64000 }
+      });
+    }
     if (params.get('paid') && params.get('session_id')) {
       history.replaceState(null, '', location.pathname);
+      $('donate-main').hidden = true;
+      $('confirm-main').hidden = false;
       fetch(API + '/api/session?id=' + encodeURIComponent(params.get('session_id')))
         .then(function(r){ if (!r.ok) throw 0; return r.json(); })
-        .then(function(s){ if (s.paid) showThanks(s); })
-        .catch(function(){ showThanks({ fund: 'row', what: 'the row', total: 0 }); });
+        .then(function(s){
+          if (s.paid) { showThanks(s); return; }
+          $('confirm-main').hidden = true;
+          $('donate-main').hidden = false;
+        })
+        .catch(function(){ showThanks({ fund: 'row' }); });
     }
   })();
 </script>

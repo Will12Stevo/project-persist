@@ -9,6 +9,8 @@
 // database to keep in sync. Money raised outside Stripe (GoFundMe, sponsors,
 // bank transfers) is added via ROW_OFFLINE / CHARITY_OFFLINE in wrangler.toml.
 
+import OFFLINE_SUPPORTERS from './offline-supporters.js';
+
 const SOURCE = 'persist-give';
 const FEE_PCT = 0.015, FEE_FIXED = 0.20; // Stripe UK standard cards; must match give.html
 const MIN = 2, MAX = 10000;               // pounds
@@ -147,16 +149,24 @@ async function session(url, env, cors) {
 
   const paid = s.payment_status === 'paid';
   // A new donation just landed, so rebuild the cached totals now and the meters update straight away.
-  if (paid) await totals(env, cors, true);
+  let fundTotals = null;
+  if (paid) {
+    const t = await (await totals(env, cors, true)).json();
+    fundTotals = t[m.fund === 'charity' ? 'charity' : 'row'];
+  }
 
   return json({
     paid,
     fund: m.fund,
     what: m.what,
+    base: parseFloat(m.base) || 0,
     total: (s.amount_total || 0) / 100,
     firstName: (m.name || '').split(/\s+/)[0],
+    wallName: m.anonymous === '1' ? 'Anonymous' : (m.name || 'Anonymous'),
+    message: m.message || '',
     tribute: m.tribute || '',
-    email: s.customer_details && s.customer_details.email || s.customer_email || ''
+    email: s.customer_details && s.customer_details.email || s.customer_email || '',
+    fundTotals
   }, 200, { ...cors, 'Cache-Control': 'no-store' });
 }
 
@@ -196,7 +206,7 @@ async function totals(env, cors, force) {
       raised[fund] += net;
       count[fund] += 1;
 
-      if (!hidden.has(s.id) && supporters.length < 24) {
+      if (!hidden.has(s.id) && supporters.length < 200) {
         supporters.push({
           kind: fund,
           name: m.anonymous === '1' ? 'Anonymous' : (m.name || 'Anonymous'),
@@ -211,6 +221,20 @@ async function totals(env, cors, force) {
     if (!list.has_more || !list.data.length) break;
     after = list.data[list.data.length - 1].id;
   }
+
+  for (const o of OFFLINE_SUPPORTERS) {
+    if (!o || !o.name) continue;
+    supporters.push({
+      kind: o.kind === 'charity' ? 'charity' : 'row',
+      name: String(o.name),
+      amount: num(o.amount),
+      what: o.what || 'Donated on GoFundMe',
+      msg: o.msg || '',
+      tribute: o.tribute || '',
+      at: Math.floor((Date.parse(o.date) || 0) / 1000)
+    });
+  }
+  supporters.sort((a, b) => b.at - a.at);
 
   const body = JSON.stringify({
     row: {

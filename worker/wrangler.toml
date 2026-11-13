@@ -16,7 +16,7 @@ CHARITY_GOAL = "10000"
 # Money raised OUTSIDE Stripe: GoFundMe, sponsors, bank transfers (pounds).
 # Update these and run `npx wrangler deploy` whenever other money comes in.
 ROW_OFFLINE = "13280"
-CHARITY_OFFLINE = "0"
+CHARITY_OFFLINE = "1647.14"
 
 # How long totals are cached before Stripe is asked again (seconds)
 CACHE_SECONDS = "120"
