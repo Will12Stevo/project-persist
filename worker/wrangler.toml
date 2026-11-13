@@ -1,0 +1,32 @@
+name = "persist-donations"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Set the secret key with:  npx wrangler secret put STRIPE_SECRET_KEY
+# (never put it in this file)
+
+[vars]
+SITE_URL = "https://projectpersist2028.com"
+ALLOWED_ORIGINS = "https://projectpersist2028.com,https://www.projectpersist2028.com"
+
+# Goals shown on the meters (pounds)
+ROW_GOAL = "64000"
+CHARITY_GOAL = "10000"
+
+# Money raised OUTSIDE Stripe: GoFundMe, sponsors, bank transfers (pounds).
+# Update these and run `npx wrangler deploy` whenever other money comes in.
+ROW_OFFLINE = "13280"
+CHARITY_OFFLINE = "0"
+
+# How long totals are cached before Stripe is asked again (seconds)
+CACHE_SECONDS = "120"
+
+# Comma-separated Checkout Session ids (cs_...) to keep off the supporters wall,
+# e.g. if a message needs removing. They still count towards the totals.
+HIDDEN_SUPPORTERS = ""
+
+# Create with:  npx wrangler kv namespace create CACHE
+# then paste the id it prints below.
+[[kv_namespaces]]
+binding = "CACHE"
+id = "d7416c55d46e4af196b3c0422e08d15c"

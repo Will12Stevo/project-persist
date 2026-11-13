@@ -332,44 +332,9 @@
   .faq details[open] summary::after{ content:"\2212"; }
   .faq p{ color:var(--ink-soft); margin-top:10px; max-width:68ch; }
 
-  /* ---------- checkout modal (Stripe Checkout mock) ---------- */
-  .checkout-backdrop{ position:fixed; inset:0; z-index:200; background:rgba(8,20,36,.62); display:flex; align-items:center; justify-content:center; padding:16px; overflow-y:auto; }
-  .checkout{ width:100%; max-width:880px; background:#fff; color:#1A1F36; border-radius:14px; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; box-shadow:0 30px 80px rgba(0,0,0,.4); font-family:-apple-system, 'Segoe UI', Roboto, sans-serif; }
-  @media (max-width:760px){ .checkout{ grid-template-columns:1fr; } }
-  .co-left{ background:#F6F9FC; padding:32px; border-right:1px solid #E3E8EE; }
-  .co-merchant{ display:flex; align-items:center; gap:10px; font-weight:600; font-size:.95rem; }
-  .co-merchant img{ width:28px; height:28px; border-radius:50%; }
-  .co-test{ font-size:.66rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; background:#FFDE92; color:#7A4A00; padding:2px 6px; border-radius:4px; }
-  .co-label{ color:#697386; font-size:.9rem; margin-top:26px; }
-  .co-amount{ font-size:2.2rem; font-weight:600; letter-spacing:-.01em; }
-  .co-items{ margin-top:18px; font-size:.88rem; }
-  .co-items li{ display:flex; justify-content:space-between; gap:10px; padding:8px 0; border-bottom:1px solid #E3E8EE; color:#3C4257; }
-  .co-items li:last-child{ border-bottom:0; font-weight:600; color:#1A1F36; }
-  .co-right{ padding:32px; }
-  .co-right h3{ font-family:inherit; font-size:1.05rem; font-weight:600; margin-bottom:16px; }
-  .co-wallet{ width:100%; height:44px; border-radius:6px; border:0; background:#000; color:#fff; font-weight:600; cursor:pointer; }
-  .co-or{ display:flex; align-items:center; gap:10px; color:#697386; font-size:.8rem; margin:16px 0; }
-  .co-or::before, .co-or::after{ content:""; flex:1; height:1px; background:#E3E8EE; }
-  .co-field{ margin-bottom:12px; }
-  .co-field label{ display:block; font-size:.82rem; color:#3C4257; font-weight:500; margin-bottom:5px; }
-  .co-input{ width:100%; padding:10px 12px; border:1px solid #D5DBE1; border-radius:6px; font-size:.95rem; color:#1A1F36; background:#fff; box-shadow:0 1px 1px rgba(0,0,0,.03); }
-  .co-input:focus{ outline:none; border-color:#635BFF; box-shadow:0 0 0 3px rgba(99,91,255,.2); }
-  .co-card{ border:1px solid #D5DBE1; border-radius:6px; overflow:hidden; }
-  .co-card .co-input{ border:0; border-radius:0; box-shadow:none; }
-  .co-card .co-input:focus{ box-shadow:inset 0 0 0 2px rgba(99,91,255,.35); }
-  .co-card-row{ display:grid; grid-template-columns:1fr 1fr; border-top:1px solid #D5DBE1; }
-  .co-card-row .co-input + .co-input{ border-left:1px solid #D5DBE1; }
-  .co-pay{ width:100%; margin-top:8px; height:46px; border:0; border-radius:6px; background:#635BFF; color:#fff; font-weight:600; font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px; }
-  .co-pay:hover{ background:#5851EA; }
-  .co-pay:disabled{ opacity:.7; cursor:progress; }
-  .co-spinner{ width:16px; height:16px; border-radius:50%; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; animation:spin .7s linear infinite; }
+  .btn-spinner{ width:16px; height:16px; border-radius:50%; border:2px solid currentColor; border-right-color:transparent; animation:spin .7s linear infinite; }
+  .btn:disabled{ opacity:.75; cursor:progress; }
   @keyframes spin{ to{ transform:rotate(360deg); } }
-  .co-error{ color:#DF1B41; font-size:.82rem; min-height:1.1em; margin-top:8px; }
-  .co-hint{ font-size:.78rem; color:#697386; margin-top:12px; }
-  .co-foot{ display:flex; align-items:center; gap:8px; margin-top:18px; font-size:.75rem; color:#697386; }
-  .co-foot b{ color:#635BFF; font-weight:700; }
-  .co-close{ background:none; border:0; color:#697386; font-size:.85rem; cursor:pointer; padding:0; margin-top:28px; }
-  .co-close:hover{ color:#1A1F36; }
 
   /* ---------- thank you ---------- */
   .thanks{ text-align:center; max-width:640px; margin-inline:auto; }
@@ -637,14 +602,13 @@
     </div>
   </section>
 
-  <section class="section" id="supporters">
+  <section class="section" id="supporters" hidden>
     <div class="container">
       <div class="section-head">
         <span class="kicker">Supporters wall</span>
         <h2 class="section-title">Thank you to everyone rowing with us</h2>
       </div>
       <div class="supporters" id="supporters-list"></div>
-      <p class="sample-note">Sample supporters shown for the preview.</p>
     </div>
   </section>
 
@@ -705,51 +669,6 @@
   </section>
 </main>
 
-<!-- Stripe Checkout mock. In production this is replaced by a redirect to Stripe's hosted Checkout page. -->
-<div class="checkout-backdrop" id="checkout" hidden>
-  <div class="checkout" role="dialog" aria-modal="true" aria-labelledby="co-title">
-    <div class="co-left">
-      <div class="co-merchant"><img src="images/logo-persistence.png" alt="">Project Persist <span class="co-test">Test mode</span></div>
-      <div class="co-label" id="co-title">Back the Project Persist row</div>
-      <div class="co-amount tabular" id="co-amount">&pound;0.00</div>
-      <ul class="co-items" id="co-items"></ul>
-      <button type="button" class="co-close" id="co-close">&larr; Back</button>
-    </div>
-    <form class="co-right" id="co-form" novalidate>
-      <button type="button" class="co-wallet" id="co-wallet">&#63743; Pay</button>
-      <div class="co-or">Or pay with card</div>
-      <div class="co-field">
-        <label for="co-email">Email</label>
-        <input class="co-input" id="co-email" type="email" autocomplete="email">
-      </div>
-      <div class="co-field">
-        <label for="co-card">Card information</label>
-        <div class="co-card">
-          <input class="co-input" id="co-card" inputmode="numeric" autocomplete="cc-number" placeholder="1234 1234 1234 1234" maxlength="19">
-          <div class="co-card-row">
-            <input class="co-input" id="co-exp" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY" maxlength="7" aria-label="Expiry date">
-            <input class="co-input" id="co-cvc" inputmode="numeric" autocomplete="cc-csc" placeholder="CVC" maxlength="4" aria-label="CVC">
-          </div>
-        </div>
-      </div>
-      <div class="co-field">
-        <label for="co-cardname">Name on card</label>
-        <input class="co-input" id="co-cardname" autocomplete="cc-name">
-      </div>
-      <div class="co-field">
-        <label for="co-country">Country or region</label>
-        <select class="co-input" id="co-country">
-          <option>United Kingdom</option><option>Belgium</option><option>Netherlands</option><option>Ireland</option><option>South Africa</option><option>United States</option><option>Other</option>
-        </select>
-      </div>
-      <button type="submit" class="co-pay" id="co-pay">Pay <span id="co-pay-amt"></span></button>
-      <p class="co-error" id="co-error" role="alert"></p>
-      <p class="co-hint">Test mode: use card 4242 4242 4242 4242, any future date and any CVC.</p>
-      <div class="co-foot">Powered by <b>stripe</b> &middot; Terms &middot; Privacy</div>
-    </form>
-  </div>
-</div>
-
 <footer>
   <div class="footer-inner">
     <span>&copy; 2026&ndash;2028 Project Persist &middot; Will, Georgia, Ines &amp; Jentel</span>
@@ -760,8 +679,11 @@
 <script>
   (function(){
     // ---------- config ----------
-    var ROW_GOAL = 64000, ROW_RAISED = 13280;   // matches the fund meter on the main site
-    var CHARITY_GOAL = 10000, CHARITY_RAISED = 0; // placeholder until agreed; will come from Stripe once live
+    // The donations Worker (see worker/README.md). Same value as API in index.html.
+    var API = 'https://persist-donations.projectpersist2028.workers.dev';
+    // Shown only if the Worker can't be reached; the live figures come from /api/totals.
+    var ROW_GOAL = 64000, ROW_RAISED = 13280;
+    var CHARITY_GOAL = 10000, CHARITY_RAISED = 0;
     var FEE_PCT = 0.015, FEE_FIXED = 0.20;      // Stripe UK standard card pricing
 
     var CHARITIES = [
@@ -781,15 +703,6 @@
     ];
 
     var CHARITY_AMOUNTS = [10, 25, 50, 100, 250];
-
-    var SAMPLE = [
-      { kind: 'charity', name: 'Sarah M.', amount: 50, what: 'Gave to charity', msg: 'Go on you four! Proud of you all.' },
-      { kind: 'row', name: 'Anonymous', amount: 100, what: '1 day at sea', msg: '', tribute: 'In memory of Noah' },
-      { kind: 'row', name: 'The Patel family', amount: 36, what: '3 meals at sea', msg: 'Enjoy the curry (if there is one).' },
-      { kind: 'row', name: 'Tom', amount: 25, what: '1 hour at the oars', msg: 'Row well, Will.' },
-      { kind: 'charity', name: 'Lotte V.', amount: 100, what: 'Gave to charity', msg: 'Succes Ines en Jentel!', tribute: 'In honour of Mama' },
-      { kind: 'row', name: 'Anonymous', amount: 130, what: '26 kilometres of ocean', msg: '' }
-    ];
 
     var COPY = {
       row: {
@@ -819,12 +732,15 @@
     function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
 
     // ---------- meters ----------
-    $('m-row-raised').textContent = money(ROW_RAISED, 0);
-    $('m-row-goal').textContent = 'of ' + money(ROW_GOAL, 0);
-    $('m-row-fill').style.width = Math.min(100, ROW_RAISED / ROW_GOAL * 100) + '%';
-    $('m-ch-raised').textContent = money(CHARITY_RAISED, 0);
-    $('m-ch-goal').textContent = 'of ' + money(CHARITY_GOAL, 0);
-    $('m-ch-fill').style.width = Math.min(100, CHARITY_RAISED / CHARITY_GOAL * 100) + '%';
+    function setMeters(row, ch){
+      $('m-row-raised').textContent = money(row.raised, 0);
+      $('m-row-goal').textContent = 'of ' + money(row.goal, 0);
+      $('m-row-fill').style.width = (row.goal ? Math.min(100, row.raised / row.goal * 100) : 0) + '%';
+      $('m-ch-raised').textContent = money(ch.raised, 0);
+      $('m-ch-goal').textContent = 'of ' + money(ch.goal, 0);
+      $('m-ch-fill').style.width = (ch.goal ? Math.min(100, ch.raised / ch.goal * 100) : 0) + '%';
+    }
+    setMeters({ raised: ROW_RAISED, goal: ROW_GOAL }, { raised: CHARITY_RAISED, goal: CHARITY_GOAL });
 
     var state = { mode: 'row', option: OPTIONS[0], qty: 10, amount: 25 };
 
@@ -843,7 +759,6 @@
       $('s-dest').innerHTML = c.dest;
       $('fee-why').textContent = c.feeWhy;
       $('s-switch').textContent = c.switchTo;
-      $('co-title').textContent = c.checkout;
       update();
     }
     document.querySelectorAll('.mode-switch button').forEach(function(b){
@@ -983,18 +898,22 @@
     }
 
     // ---------- supporters wall ----------
-    $('supporters-list').innerHTML = SAMPLE.map(function(s){
+    function renderSupporters(list){
+      if (!list.length) { $('supporters').hidden = true; return; }
+      $('supporters').hidden = false;
+      $('supporters-list').innerHTML = list.map(supporterHTML).join('');
+    }
+    function supporterHTML(s){
       var k = s.kind === 'row' ? '<span class="supporter-kind" style="--k:var(--row)">Backed the row</span>' : '<span class="supporter-kind" style="--k:var(--charity)">Gave to charity</span>';
       return '<div class="supporter"><div class="supporter-top"><span class="supporter-name">' + esc(s.name) + '</span><span class="supporter-amt tabular">' + money(s.amount, 0) + '</span></div>' +
         '<div class="supporter-what">' + esc(s.what) + '</div>' + k +
         (s.tribute ? '<div class="supporter-tribute">' + esc(s.tribute) + '</div>' : '') +
         (s.msg ? '<p class="supporter-msg">' + esc(s.msg) + '</p>' : '') + '</div>';
-    }).join('');
+    }
 
-    // ---------- submit -> checkout ----------
-    // In production this calls a small serverless function that creates a Stripe Checkout Session
-    // with metadata.fund = 'row' | 'charity' so the two pots are reconciled separately
-    // (or two separate Stripe accounts / Payment Links, one per pot).
+    // ---------- submit -> Stripe Checkout ----------
+    // The Worker re-checks every amount, creates a Stripe Checkout Session tagged
+    // fund = 'row' | 'charity', and we send the donor to Stripe's own payment page.
     $('donate-form').addEventListener('submit', function(e){
       e.preventDefault();
       var t = calc();
@@ -1005,84 +924,55 @@
       else if ($('tribute-on').checked && !$('tribute-name').value.trim()) { err = 'Please add a name for your dedication.'; $('tribute-name').focus(); }
       $('s-error').textContent = err;
       if (err) return;
-      openCheckout(t);
-    });
 
-    var lastFocus = null;
-    function openCheckout(t){
-      lastFocus = document.activeElement;
-      var label = state.mode === 'charity' ? 'Charity donation (split 4 ways)' : 'Row: ' + impactText();
-      var items = '<li><span>' + esc(label) + '</span><span>' + money(t.base, 2) + '</span></li>';
-      if (t.cover) items += '<li><span>Card fee cover</span><span>' + money(t.total - t.base, 2) + '</span></li>';
-      items += '<li><span>Total due</span><span>' + money(t.total, 2) + '</span></li>';
-      $('co-items').innerHTML = items;
-      $('co-amount').textContent = money(t.total, 2);
-      $('co-pay-amt').textContent = money(t.total, 2);
-      $('co-email').value = $('d-email').value.trim();
-      $('co-cardname').value = $('d-name').value.trim();
-      $('co-error').textContent = '';
-      $('checkout').hidden = false;
-      document.body.style.overflow = 'hidden';
-      $('co-card').focus();
-    }
-    function closeCheckout(){
-      $('checkout').hidden = true;
-      document.body.style.overflow = '';
-      if (lastFocus) lastFocus.focus();
-    }
-    $('co-close').addEventListener('click', closeCheckout);
-    $('checkout').addEventListener('click', function(e){ if (e.target === this) closeCheckout(); });
-    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !$('checkout').hidden) closeCheckout(); });
+      var payload = {
+        mode: state.mode,
+        option: state.option.id,
+        qty: state.qty,
+        amount: state.mode === 'charity' ? state.amount : t.base,
+        coverFee: t.cover,
+        name: $('d-name').value.trim(),
+        email: $('d-email').value.trim(),
+        message: $('d-message').value.trim(),
+        anonymous: $('d-anon').checked,
+        tribute: $('tribute-on').checked ? {
+          type: document.querySelector('input[name="tribute-type"]:checked').value,
+          name: $('tribute-name').value.trim(),
+          message: $('tribute-msg').value.trim()
+        } : null
+      };
 
-    $('co-card').addEventListener('input', function(){
-      var d = this.value.replace(/\D/g, '').slice(0, 16);
-      this.value = d.replace(/(.{4})/g, '$1 ').trim();
-    });
-    $('co-exp').addEventListener('input', function(){
-      var d = this.value.replace(/\D/g, '').slice(0, 4);
-      this.value = d.length > 2 ? d.slice(0, 2) + ' / ' + d.slice(2) : d;
-    });
-    $('co-cvc').addEventListener('input', function(){ this.value = this.value.replace(/\D/g, '').slice(0, 4); });
-
-    function pay(){
-      var btn = $('co-pay');
+      var btn = $('s-submit');
       btn.disabled = true;
-      btn.innerHTML = '<span class="co-spinner"></span>Processing';
-      setTimeout(function(){
-        btn.disabled = false;
-        btn.innerHTML = 'Pay <span id="co-pay-amt">' + money(calc().total, 2) + '</span>';
-        showThanks();
-      }, 1400);
-    }
-    $('co-wallet').addEventListener('click', pay);
-    $('co-form').addEventListener('submit', function(e){
-      e.preventDefault();
-      var card = $('co-card').value.replace(/\s/g, ''), exp = $('co-exp').value.replace(/\D/g, ''), cvc = $('co-cvc').value;
-      var err = '';
-      if (card.length < 16) err = 'Your card number is incomplete.';
-      else if (exp.length < 4 || +exp.slice(0, 2) < 1 || +exp.slice(0, 2) > 12) err = 'Your card\'s expiry date is incomplete.';
-      else if (cvc.length < 3) err = 'Your card\'s security code is incomplete.';
-      $('co-error').textContent = err;
-      if (!err) pay();
+      btn.innerHTML = '<span class="btn-spinner"></span>Taking you to Stripe';
+      fetch(API + '/api/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        .then(function(r){ return r.json().then(function(d){ return { ok: r.ok, d: d }; }); })
+        .then(function(res){
+          if (res.ok && res.d.url) { window.location.href = res.d.url; return; }
+          throw new Error(res.d.error || 'Something went wrong.');
+        })
+        .catch(function(e){
+          btn.disabled = false;
+          update();
+          $('s-error').textContent = (e && e.message && !/fetch|network/i.test(e.message)) ? e.message : 'We couldn\'t reach the payment page. Please check your connection and try again.';
+        });
     });
+    // Coming back with the browser's Back button from Stripe: re-enable the button.
+    window.addEventListener('pageshow', function(e){ if (e.persisted) { $('s-submit').disabled = false; update(); } });
 
-    // ---------- thank you ----------
-    function showThanks(){
-      var t = calc();
-      var first = $('d-name').value.trim().split(/\s+/)[0];
-      $('t-title').textContent = 'Thank you, ' + first + '!';
-      var lede = state.mode === 'charity'
-        ? 'Your donation of ' + money(t.total, 2) + ' is going to our four charities, split equally.'
-        : 'You\'ve sponsored ' + impactText().replace(/^A contribution/, 'a contribution') + '. That goes straight into getting the boat across the Atlantic.';
-      lede += ' A receipt is on its way to ' + $('d-email').value.trim() + '.';
-      if ($('tribute-on').checked) {
-        var type = document.querySelector('input[name="tribute-type"]:checked').value;
-        lede += ' It\'s dedicated ' + type.toLowerCase() + ' ' + $('tribute-name').value.trim() + '.';
-      }
+    // ---------- thank you (Stripe sends donors back to /give?paid=1&session_id=...) ----------
+    var thanksFund = 'row';
+    function showThanks(s){
+      thanksFund = s.fund;
+      $('t-title').textContent = s.firstName ? 'Thank you, ' + s.firstName + '!' : 'Thank you!';
+      var lede = s.fund === 'charity'
+        ? 'Your donation of ' + money(s.total, 2) + ' is going to our four charities, split equally.'
+        : 'You\'ve sponsored ' + (s.what === 'Backed the row' ? 'the row' : s.what) + '. That goes straight into getting the boat across the Atlantic.';
+      if (s.email) lede += ' A receipt is on its way to ' + s.email + '.';
+      if (s.tribute) lede += ' It\'s dedicated ' + s.tribute.charAt(0).toLowerCase() + s.tribute.slice(1) + '.';
       $('t-lede').textContent = lede;
-      $('t-split').hidden = state.mode !== 'charity';
-      $('t-split').innerHTML = splitHTML(t.each);
-      closeCheckout();
+      $('t-split').hidden = s.fund !== 'charity';
+      $('t-split').innerHTML = s.fund === 'charity' ? splitHTML(Math.floor(s.total / CHARITIES.length * 100) / 100) : '';
       $('donate-main').hidden = true;
       $('thanks-main').hidden = false;
       window.scrollTo(0, 0);
@@ -1090,7 +980,7 @@
       $('t-title').focus();
     }
     $('t-share').addEventListener('click', function(){
-      var text = state.mode === 'charity' ? 'I just donated to Project Persist\'s four charities.' : 'I just sponsored Project Persist\'s Atlantic row.';
+      var text = thanksFund === 'charity' ? 'I just donated to Project Persist\'s four charities.' : 'I just sponsored Project Persist\'s Atlantic row.';
       var data = { title: 'Project Persist', text: text, url: 'https://projectpersist2028.com/give' };
       if (navigator.share) { navigator.share(data).catch(function(){}); return; }
       if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(function(){ $('t-copied').hidden = false; });
@@ -1098,6 +988,23 @@
 
     selectOption(OPTIONS[0], true);
     setMode(location.hash === '#charity' ? 'charity' : 'row');
+
+    // ---------- live data ----------
+    if (API.indexOf('REPLACE-ME') === -1) {
+      fetch(API + '/api/totals')
+        .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+        .then(function(d){ setMeters(d.row, d.charity); renderSupporters(d.supporters || []); })
+        .catch(function(){ /* keep the fallback figures */ });
+    }
+
+    var params = new URLSearchParams(location.search);
+    if (params.get('paid') && params.get('session_id')) {
+      history.replaceState(null, '', location.pathname);
+      fetch(API + '/api/session?id=' + encodeURIComponent(params.get('session_id')))
+        .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+        .then(function(s){ if (s.paid) showThanks(s); })
+        .catch(function(){ showThanks({ fund: 'row', what: 'the row', total: 0 }); });
+    }
   })();
 </script>
 <script>
