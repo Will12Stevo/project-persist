@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://projectpersist2028.com/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -19,11 +19,11 @@
       <image:title>The boat secured for the Project Persist Atlantic row</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://projectpersist2028.com/images/georgia-portrait.jpg</image:loc>
+      <image:loc>https://projectpersist2028.com/images/georgia.jpg</image:loc>
       <image:title>Georgia, Project Persist Atlantic rower for Action for M.E.</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://projectpersist2028.com/images/will-portrait.jpg</image:loc>
+      <image:loc>https://projectpersist2028.com/images/will.jpg</image:loc>
       <image:title>Will, Project Persist Atlantic rower for Diabetes UK</image:title>
     </image:image>
     <image:image>
@@ -34,5 +34,11 @@
       <image:loc>https://projectpersist2028.com/images/hull-branding.jpg</image:loc>
       <image:title>Sponsor branding on an Atlantic Dash ocean rowing boat hull</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://projectpersist2028.com/give</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
